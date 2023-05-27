@@ -8,6 +8,8 @@ package banco;
  *
  * @author gusta
  */
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 
 /**
@@ -88,15 +90,33 @@ public class CriarBanco {
     }
 
     
+    public void criarTabelas(String nomeArq) throws FileNotFoundException, SQLException, IOException {
+        
+        ManipulaArquivo arquivo = new ManipulaArquivo(nomeArq);
+        arquivo.abreArqLeitura();
+        
+        String linha;
+        String linhaFim = "";
+        while((linha = arquivo.lerLinha())!= null) {
+            linhaFim += linha;
+        }
+        updateBanco(linhaFim);
+          
+    }
+    
     public static void main(String[] args) {
         try {
             CriarBanco appCria = new CriarBanco();
             appCria.criarBaseDados();
             
+            appCria.criarTabelas("MERCEARIA.txt");
+            
         } catch (ClassNotFoundException ex) {
             System.out.println("Problemas com o driver " +ex.getMessage());
         }catch(SQLException ex){
             System.out.println(ex.getMessage());
+        } catch (IOException ex) {
+           System.out.println("Arquivo não encontrado");
         }
     }
     
