@@ -83,9 +83,10 @@ public class CriarBanco {
         try {
             
             sessao.executeUpdate(sql);
+            System.out.println("sql sucesso");
         } catch (SQLException e) {
             throw new SQLException("erro na execução da SQL\n"
-                    + sql);
+                    + e.getMessage());
         }
     }
 
@@ -96,12 +97,17 @@ public class CriarBanco {
         arquivo.abreArqLeitura();
         
         String linha;
-        String linhaFim = "";
+        String linhaFim = "";;
         while((linha = arquivo.lerLinha())!= null) {
             linhaFim += linha;
+            
+        }         
+        System.out.println(linhaFim);
+        String[] comandos = linhaFim.split(";");
+        for (String comando : comandos) {
+            System.out.println(comando+";");
+            updateBanco(comando+";");
         }
-        updateBanco(linhaFim);
-          
     }
     
     public static void main(String[] args) {
