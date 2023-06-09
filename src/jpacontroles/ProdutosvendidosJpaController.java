@@ -38,8 +38,8 @@ public class ProdutosvendidosJpaController implements Serializable {
         if (produtosvendidos.getProdutosvendidosPK() == null) {
             produtosvendidos.setProdutosvendidosPK(new ProdutosvendidosPK());
         }
-        produtosvendidos.getProdutosvendidosPK().setCodvenda(produtosvendidos.getVendadiaria().getCodvenda());
         produtosvendidos.getProdutosvendidosPK().setCodproduto(produtosvendidos.getProdutos().getCodproduto());
+        produtosvendidos.getProdutosvendidosPK().setCodvenda(produtosvendidos.getVendadiaria().getCodvenda());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -77,8 +77,8 @@ public class ProdutosvendidosJpaController implements Serializable {
     }
 
     public void edit(Produtosvendidos produtosvendidos) throws NonexistentEntityException, Exception {
-        produtosvendidos.getProdutosvendidosPK().setCodvenda(produtosvendidos.getVendadiaria().getCodvenda());
         produtosvendidos.getProdutosvendidosPK().setCodproduto(produtosvendidos.getProdutos().getCodproduto());
+        produtosvendidos.getProdutosvendidosPK().setCodvenda(produtosvendidos.getVendadiaria().getCodvenda());
         EntityManager em = null;
         try {
             em = getEntityManager();

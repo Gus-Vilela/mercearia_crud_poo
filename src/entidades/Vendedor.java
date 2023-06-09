@@ -61,19 +61,6 @@ public class Vendedor implements Serializable {
         this.salariobase = salariobase;
         this.perccomissao = perccomissao;
     }
-    
-    public Vendedor(String nome, double salariobase, double perccomissao) {
-        this.nome = nome;
-        this.salariobase = salariobase;
-        this.perccomissao = perccomissao;
-    }
-    
-    public Vendedor(Integer codvendedor,String nome, double salariobase, double perccomissao) {
-        this.codvendedor = codvendedor;
-        this.nome = nome;
-        this.salariobase = salariobase;
-        this.perccomissao = perccomissao;
-    }
 
     public Integer getCodvendedor() {
         return codvendedor;

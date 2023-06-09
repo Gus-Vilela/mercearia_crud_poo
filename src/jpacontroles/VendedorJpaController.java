@@ -24,13 +24,11 @@ import jpacontroles.exceptions.NonexistentEntityException;
  * @author gusta
  */
 public class VendedorJpaController implements Serializable {
-    
-    private EntityManagerFactory emf = null;
 
     public VendedorJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
+    private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
