@@ -5,13 +5,17 @@
         <group>
             <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/entidades/Vendedor.java</file>
             <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/META-INF/persistence.xml</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/jpacontroles/PagamentoJpaController.java</file>
             <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/banco/CriarBanco.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/DAO/VendedorDAO.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/entidades/Produtos.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/Test.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/banco/ManipulaArquivo.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/DAO/AbstractDAO.java</file>
             <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/entidades/Pagamento.java</file>
             <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/jpacontroles/ProdutosvendidosJpaController.java</file>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/DAO/VendedorDAO.java</file>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/Test.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/DAO/ProdutosDAO.java</file>
             <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/jpacontroles/VendedorJpaController.java</file>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/banco/ManipulaArquivo.java</file>
         </group>
     </open-files>
 </project-private>

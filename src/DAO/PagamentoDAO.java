@@ -4,27 +4,27 @@
  */
 package DAO;
 
-import entidades.Vendedor;
+import entidades.Pagamento;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
-import jpacontroles.VendedorJpaController;
-import jpacontroles.exceptions.NonexistentEntityException;
 import javax.persistence.PersistenceException;
+import jpacontroles.PagamentoJpaController;
+import jpacontroles.exceptions.NonexistentEntityException;
 
 /**
  *
  * @author gusta
  */
-public class VendedorDAO {
-    private VendedorJpaController objetoJPA;
+public class PagamentoDAO {
+    private PagamentoJpaController objetoJPA;
     private EntityManagerFactory emf;
 
-    public VendedorDAO() {
+    public PagamentoDAO() {
         emf = DAOUtils.getEntityManagerFac();
-        objetoJPA = new VendedorJpaController(emf);
+        objetoJPA = new PagamentoJpaController(emf);
     }
     
-    public void add(Vendedor objeto){
+    public void add(Pagamento objeto){
         try {
             objetoJPA.create(objeto);
         } catch (PersistenceException ex) {
@@ -32,11 +32,11 @@ public class VendedorDAO {
         }
     }
 
-    public void edit(Vendedor objeto) throws Exception{
+    public void edit(Pagamento objeto) throws Exception{
         try {
             objetoJPA.edit(objeto);
         } catch (NonexistentEntityException ex) {
-            throw new Exception("Vendedor " + objeto + " não existe.", ex);
+            throw new Exception("Pagamento " + objeto + " não existe.", ex);
         }
     }
 
@@ -44,22 +44,22 @@ public class VendedorDAO {
         try {
             objetoJPA.destroy(id);
         } catch (NonexistentEntityException ex) {
-            throw new Exception("Vendedor " + id + " não existe.", ex);
+            throw new Exception("Pagamento " + id + " não existe.", ex);
         }
     }
 
-    public List<Vendedor> getAll(){
-        return objetoJPA.findVendedorEntities();
+    public List<Pagamento> getAll(){
+        return objetoJPA.findPagamentoEntities();
     }
     
-    public Vendedor getVendedor(Integer id){
-        return objetoJPA.findVendedor(id);
+    public Pagamento getPagamento(Integer id){
+        return objetoJPA.findPagamento(id);
     }
     
     /**
      * @return the objetoJPA
      */
-    public VendedorJpaController getObjetoJPA() {
+    public PagamentoJpaController getObjetoJPA() {
         return objetoJPA;
     }
 
@@ -69,5 +69,4 @@ public class VendedorDAO {
     public EntityManagerFactory getEmf() {
         return emf;
     }
-    
 }

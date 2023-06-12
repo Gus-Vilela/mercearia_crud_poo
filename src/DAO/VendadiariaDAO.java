@@ -4,27 +4,27 @@
  */
 package DAO;
 
-import entidades.Vendedor;
+import entidades.Vendadiaria;
 import java.util.List;
 import javax.persistence.EntityManagerFactory;
-import jpacontroles.VendedorJpaController;
-import jpacontroles.exceptions.NonexistentEntityException;
 import javax.persistence.PersistenceException;
+import jpacontroles.VendadiariaJpaController;
+import jpacontroles.exceptions.NonexistentEntityException;
 
 /**
  *
  * @author gusta
  */
-public class VendedorDAO {
-    private VendedorJpaController objetoJPA;
+public class VendadiariaDAO {
+    private VendadiariaJpaController objetoJPA;
     private EntityManagerFactory emf;
 
-    public VendedorDAO() {
+    public VendadiariaDAO() {
         emf = DAOUtils.getEntityManagerFac();
-        objetoJPA = new VendedorJpaController(emf);
+        objetoJPA = new VendadiariaJpaController(emf);
     }
     
-    public void add(Vendedor objeto){
+    public void add(Vendadiaria objeto){
         try {
             objetoJPA.create(objeto);
         } catch (PersistenceException ex) {
@@ -32,11 +32,11 @@ public class VendedorDAO {
         }
     }
 
-    public void edit(Vendedor objeto) throws Exception{
+    public void edit(Vendadiaria objeto) throws Exception{
         try {
             objetoJPA.edit(objeto);
         } catch (NonexistentEntityException ex) {
-            throw new Exception("Vendedor " + objeto + " não existe.", ex);
+            throw new Exception("Venda diária " + objeto + " não existe.", ex);
         }
     }
 
@@ -44,22 +44,22 @@ public class VendedorDAO {
         try {
             objetoJPA.destroy(id);
         } catch (NonexistentEntityException ex) {
-            throw new Exception("Vendedor " + id + " não existe.", ex);
+            throw new Exception("Venda diária " + id + " não existe.", ex);
         }
     }
 
-    public List<Vendedor> getAll(){
-        return objetoJPA.findVendedorEntities();
+    public List<Vendadiaria> getAll(){
+        return objetoJPA.findVendadiariaEntities();
     }
     
-    public Vendedor getVendedor(Integer id){
-        return objetoJPA.findVendedor(id);
+    public Vendadiaria getVendadiaria(Integer id){
+        return objetoJPA.findVendadiaria(id);
     }
     
     /**
      * @return the objetoJPA
      */
-    public VendedorJpaController getObjetoJPA() {
+    public VendadiariaJpaController getObjetoJPA() {
         return objetoJPA;
     }
 
@@ -69,5 +69,4 @@ public class VendedorDAO {
     public EntityManagerFactory getEmf() {
         return emf;
     }
-    
 }

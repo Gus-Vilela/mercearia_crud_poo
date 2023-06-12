@@ -1,5 +1,7 @@
 
+import DAO.ProdutosDAO;
 import DAO.VendedorDAO;
+import entidades.Produtos;
 import entidades.Vendedor;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -14,9 +16,17 @@ public class Test {
     public static void main(String[] args) {
         VendedorDAO vendedorDAO = new VendedorDAO();
         Vendedor vendedor = new Vendedor();
-        vendedor.setNome("Jao");
-        vendedor.setPerccomissao(10.00);
-        vendedor.setSalariobase(1200.00);
+        vendedor.setNome("Gus");
+        vendedor.setPerccomissao(15.00);
+        vendedor.setSalariobase(1500.00);
         vendedorDAO.add(vendedor);
+        
+        ProdutosDAO produtosDAO = new ProdutosDAO();
+        Produtos produto = new Produtos();
+        produto.setDescProduto("Pasta de Amendoim");
+        produto.setImagem("/pathToImage");
+        produto.setPreco(18);
+        produto.setUnidadeMedida("Kg");
+        produtosDAO.add(produto);
     }
 }
