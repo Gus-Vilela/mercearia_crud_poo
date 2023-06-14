@@ -5,11 +5,14 @@
 package entidades;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,13 +28,13 @@ import javax.persistence.Table;
  * @author gusta
  */
 @Entity
-@Table(name = "vendadiaria")
+@Table(name = "venda")
 @NamedQueries({
-    @NamedQuery(name = "Vendadiaria.findAll", query = "SELECT v FROM Vendadiaria v"),
-    @NamedQuery(name = "Vendadiaria.findByCodvenda", query = "SELECT v FROM Vendadiaria v WHERE v.codvenda = :codvenda"),
-    @NamedQuery(name = "Vendadiaria.findByValortotal", query = "SELECT v FROM Vendadiaria v WHERE v.valortotal = :valortotal"),
-    @NamedQuery(name = "Vendadiaria.findByCodproduto", query = "SELECT v FROM Vendadiaria v WHERE v.codproduto = :codproduto")})
-public class Vendadiaria implements Serializable {
+    @NamedQuery(name = "Venda.findAll", query = "SELECT v FROM Venda v"),
+    @NamedQuery(name = "Venda.findByCodvenda", query = "SELECT v FROM Venda v WHERE v.codvenda = :codvenda"),
+    @NamedQuery(name = "Venda.findByFormapagto", query = "SELECT v FROM Venda v WHERE v.formapagto = :formapagto"),
+    @NamedQuery(name = "Venda.findByDatavenda", query = "SELECT v FROM Venda v WHERE v.datavenda = :datavenda")})
+public class Venda implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -39,31 +42,31 @@ public class Vendadiaria implements Serializable {
     @Basic(optional = false)
     @Column(name = "CODVENDA")
     private Integer codvenda;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name = "VALORTOTAL")
-    private Double valortotal;
+    @Enumerated(EnumType.ORDINAL)
     @Basic(optional = false)
-    @Column(name = "CODPRODUTO")
-    private int codproduto;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "vendadiaria")
+    @Column(name = "FORMAPAGTO")
+    private Pagamento formapagto;
+    @Basic(optional = false)
+    @Column(name = "DATAVENDA")
+    
+    private LocalDate datavenda;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "venda")
     private Collection<Produtosvendidos> produtosvendidosCollection;
-    @JoinColumn(name = "CODPAGAMENTO", referencedColumnName = "CODPAGAMENTO")
-    @ManyToOne(optional = false)
-    private Pagamento codpagamento;
     @JoinColumn(name = "CODVENDEDOR", referencedColumnName = "CODVENDEDOR")
     @ManyToOne(optional = false)
     private Vendedor codvendedor;
 
-    public Vendadiaria() {
+    public Venda() {
     }
 
-    public Vendadiaria(Integer codvenda) {
+    public Venda(Integer codvenda) {
         this.codvenda = codvenda;
     }
 
-    public Vendadiaria(Integer codvenda, int codproduto) {
+    public Venda(Integer codvenda, Pagamento formapagto, LocalDate datavenda) {
         this.codvenda = codvenda;
-        this.codproduto = codproduto;
+        this.formapagto = formapagto;
+        this.datavenda = datavenda;
     }
 
     public Integer getCodvenda() {
@@ -74,20 +77,20 @@ public class Vendadiaria implements Serializable {
         this.codvenda = codvenda;
     }
 
-    public Double getValortotal() {
-        return valortotal;
+    public Pagamento getFormapagto() {
+        return formapagto;
     }
 
-    public void setValortotal(Double valortotal) {
-        this.valortotal = valortotal;
+    public void setFormapagto(Pagamento formapagto) {
+        this.formapagto = formapagto;
     }
 
-    public int getCodproduto() {
-        return codproduto;
+    public LocalDate getDatavenda() {
+        return datavenda;
     }
 
-    public void setCodproduto(int codproduto) {
-        this.codproduto = codproduto;
+    public void setDatavenda(LocalDate datavenda) {
+        this.datavenda = datavenda;
     }
 
     public Collection<Produtosvendidos> getProdutosvendidosCollection() {
@@ -96,14 +99,6 @@ public class Vendadiaria implements Serializable {
 
     public void setProdutosvendidosCollection(Collection<Produtosvendidos> produtosvendidosCollection) {
         this.produtosvendidosCollection = produtosvendidosCollection;
-    }
-
-    public Pagamento getCodpagamento() {
-        return codpagamento;
-    }
-
-    public void setCodpagamento(Pagamento codpagamento) {
-        this.codpagamento = codpagamento;
     }
 
     public Vendedor getCodvendedor() {
@@ -124,10 +119,10 @@ public class Vendadiaria implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Vendadiaria)) {
+        if (!(object instanceof Venda)) {
             return false;
         }
-        Vendadiaria other = (Vendadiaria) object;
+        Venda other = (Venda) object;
         if ((this.codvenda == null && other.codvenda != null) || (this.codvenda != null && !this.codvenda.equals(other.codvenda))) {
             return false;
         }
@@ -136,7 +131,7 @@ public class Vendadiaria implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Vendadiaria[ codvenda=" + codvenda + " ]";
+        return "entidades.Venda[ codvenda=" + codvenda + " ]";
     }
     
 }

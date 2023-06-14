@@ -23,27 +23,23 @@ import javax.persistence.Table;
 @Table(name = "produtosvendidos")
 @NamedQueries({
     @NamedQuery(name = "Produtosvendidos.findAll", query = "SELECT p FROM Produtosvendidos p"),
-    @NamedQuery(name = "Produtosvendidos.findByCodvenda", query = "SELECT p FROM Produtosvendidos p WHERE p.produtosvendidosPK.codvenda = :codvenda"),
     @NamedQuery(name = "Produtosvendidos.findByCodproduto", query = "SELECT p FROM Produtosvendidos p WHERE p.produtosvendidosPK.codproduto = :codproduto"),
-    @NamedQuery(name = "Produtosvendidos.findByQtdvendida", query = "SELECT p FROM Produtosvendidos p WHERE p.qtdvendida = :qtdvendida"),
-    @NamedQuery(name = "Produtosvendidos.findByPreco", query = "SELECT p FROM Produtosvendidos p WHERE p.preco = :preco")})
+    @NamedQuery(name = "Produtosvendidos.findByCodvenda", query = "SELECT p FROM Produtosvendidos p WHERE p.produtosvendidosPK.codvenda = :codvenda"),
+    @NamedQuery(name = "Produtosvendidos.findByQuantidade", query = "SELECT p FROM Produtosvendidos p WHERE p.quantidade = :quantidade")})
 public class Produtosvendidos implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected ProdutosvendidosPK produtosvendidosPK;
     @Basic(optional = false)
-    @Column(name = "QTDVENDIDA")
-    private int qtdvendida;
-    @Basic(optional = false)
-    @Column(name = "PRECO")
-    private double preco;
+    @Column(name = "QUANTIDADE")
+    private int quantidade;
     @JoinColumn(name = "CODPRODUTO", referencedColumnName = "CODPRODUTO", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Produtos produtos;
     @JoinColumn(name = "CODVENDA", referencedColumnName = "CODVENDA", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Vendadiaria vendadiaria;
+    private Venda venda;
 
     public Produtosvendidos() {
     }
@@ -52,14 +48,13 @@ public class Produtosvendidos implements Serializable {
         this.produtosvendidosPK = produtosvendidosPK;
     }
 
-    public Produtosvendidos(ProdutosvendidosPK produtosvendidosPK, int qtdvendida, double preco) {
+    public Produtosvendidos(ProdutosvendidosPK produtosvendidosPK, int quantidade) {
         this.produtosvendidosPK = produtosvendidosPK;
-        this.qtdvendida = qtdvendida;
-        this.preco = preco;
+        this.quantidade = quantidade;
     }
 
-    public Produtosvendidos(int codvenda, int codproduto) {
-        this.produtosvendidosPK = new ProdutosvendidosPK(codvenda, codproduto);
+    public Produtosvendidos(int codproduto, int codvenda) {
+        this.produtosvendidosPK = new ProdutosvendidosPK(codproduto, codvenda);
     }
 
     public ProdutosvendidosPK getProdutosvendidosPK() {
@@ -70,20 +65,12 @@ public class Produtosvendidos implements Serializable {
         this.produtosvendidosPK = produtosvendidosPK;
     }
 
-    public int getQtdvendida() {
-        return qtdvendida;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQtdvendida(int qtdvendida) {
-        this.qtdvendida = qtdvendida;
-    }
-
-    public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public Produtos getProdutos() {
@@ -94,12 +81,12 @@ public class Produtosvendidos implements Serializable {
         this.produtos = produtos;
     }
 
-    public Vendadiaria getVendadiaria() {
-        return vendadiaria;
+    public Venda getVenda() {
+        return venda;
     }
 
-    public void setVendadiaria(Vendadiaria vendadiaria) {
-        this.vendadiaria = vendadiaria;
+    public void setVenda(Venda venda) {
+        this.venda = venda;
     }
 
     @Override

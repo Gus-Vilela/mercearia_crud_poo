@@ -3,10 +3,9 @@
   <persistence-unit name="MerceariaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>entidades.Produtosvendidos</class>
-    <class>entidades.Pagamento</class>
+    <class>entidades.Venda</class>
     <class>entidades.Vendedor</class>
     <class>entidades.Produtos</class>
-    <class>entidades.Vendadiaria</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mercearia?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

@@ -38,6 +38,7 @@ public class Vendedor implements Serializable {
     @Basic(optional = false)
     @Column(name = "CODVENDEDOR")
     private Integer codvendedor;
+    @Basic(optional = false)
     @Column(name = "NOME")
     private String nome;
     @Basic(optional = false)
@@ -47,7 +48,7 @@ public class Vendedor implements Serializable {
     @Column(name = "PERCCOMISSAO")
     private double perccomissao;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codvendedor")
-    private Collection<Vendadiaria> vendadiariaCollection;
+    private Collection<Venda> vendaCollection;
 
     public Vendedor() {
     }
@@ -56,8 +57,9 @@ public class Vendedor implements Serializable {
         this.codvendedor = codvendedor;
     }
 
-    public Vendedor(Integer codvendedor, double salariobase, double perccomissao) {
+    public Vendedor(Integer codvendedor, String nome, double salariobase, double perccomissao) {
         this.codvendedor = codvendedor;
+        this.nome = nome;
         this.salariobase = salariobase;
         this.perccomissao = perccomissao;
     }
@@ -94,12 +96,12 @@ public class Vendedor implements Serializable {
         this.perccomissao = perccomissao;
     }
 
-    public Collection<Vendadiaria> getVendadiariaCollection() {
-        return vendadiariaCollection;
+    public Collection<Venda> getVendaCollection() {
+        return vendaCollection;
     }
 
-    public void setVendadiariaCollection(Collection<Vendadiaria> vendadiariaCollection) {
-        this.vendadiariaCollection = vendadiariaCollection;
+    public void setVendaCollection(Collection<Venda> vendaCollection) {
+        this.vendaCollection = vendaCollection;
     }
 
     @Override

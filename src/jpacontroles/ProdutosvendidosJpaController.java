@@ -12,7 +12,7 @@ import javax.persistence.criteria.Root;
 import entidades.Produtos;
 import entidades.Produtosvendidos;
 import entidades.ProdutosvendidosPK;
-import entidades.Vendadiaria;
+import entidades.Venda;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -38,8 +38,8 @@ public class ProdutosvendidosJpaController implements Serializable {
         if (produtosvendidos.getProdutosvendidosPK() == null) {
             produtosvendidos.setProdutosvendidosPK(new ProdutosvendidosPK());
         }
+        produtosvendidos.getProdutosvendidosPK().setCodvenda(produtosvendidos.getVenda().getCodvenda());
         produtosvendidos.getProdutosvendidosPK().setCodproduto(produtosvendidos.getProdutos().getCodproduto());
-        produtosvendidos.getProdutosvendidosPK().setCodvenda(produtosvendidos.getVendadiaria().getCodvenda());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -49,19 +49,19 @@ public class ProdutosvendidosJpaController implements Serializable {
                 produtos = em.getReference(produtos.getClass(), produtos.getCodproduto());
                 produtosvendidos.setProdutos(produtos);
             }
-            Vendadiaria vendadiaria = produtosvendidos.getVendadiaria();
-            if (vendadiaria != null) {
-                vendadiaria = em.getReference(vendadiaria.getClass(), vendadiaria.getCodvenda());
-                produtosvendidos.setVendadiaria(vendadiaria);
+            Venda venda = produtosvendidos.getVenda();
+            if (venda != null) {
+                venda = em.getReference(venda.getClass(), venda.getCodvenda());
+                produtosvendidos.setVenda(venda);
             }
             em.persist(produtosvendidos);
             if (produtos != null) {
                 produtos.getProdutosvendidosCollection().add(produtosvendidos);
                 produtos = em.merge(produtos);
             }
-            if (vendadiaria != null) {
-                vendadiaria.getProdutosvendidosCollection().add(produtosvendidos);
-                vendadiaria = em.merge(vendadiaria);
+            if (venda != null) {
+                venda.getProdutosvendidosCollection().add(produtosvendidos);
+                venda = em.merge(venda);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -77,8 +77,8 @@ public class ProdutosvendidosJpaController implements Serializable {
     }
 
     public void edit(Produtosvendidos produtosvendidos) throws NonexistentEntityException, Exception {
+        produtosvendidos.getProdutosvendidosPK().setCodvenda(produtosvendidos.getVenda().getCodvenda());
         produtosvendidos.getProdutosvendidosPK().setCodproduto(produtosvendidos.getProdutos().getCodproduto());
-        produtosvendidos.getProdutosvendidosPK().setCodvenda(produtosvendidos.getVendadiaria().getCodvenda());
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -86,15 +86,15 @@ public class ProdutosvendidosJpaController implements Serializable {
             Produtosvendidos persistentProdutosvendidos = em.find(Produtosvendidos.class, produtosvendidos.getProdutosvendidosPK());
             Produtos produtosOld = persistentProdutosvendidos.getProdutos();
             Produtos produtosNew = produtosvendidos.getProdutos();
-            Vendadiaria vendadiariaOld = persistentProdutosvendidos.getVendadiaria();
-            Vendadiaria vendadiariaNew = produtosvendidos.getVendadiaria();
+            Venda vendaOld = persistentProdutosvendidos.getVenda();
+            Venda vendaNew = produtosvendidos.getVenda();
             if (produtosNew != null) {
                 produtosNew = em.getReference(produtosNew.getClass(), produtosNew.getCodproduto());
                 produtosvendidos.setProdutos(produtosNew);
             }
-            if (vendadiariaNew != null) {
-                vendadiariaNew = em.getReference(vendadiariaNew.getClass(), vendadiariaNew.getCodvenda());
-                produtosvendidos.setVendadiaria(vendadiariaNew);
+            if (vendaNew != null) {
+                vendaNew = em.getReference(vendaNew.getClass(), vendaNew.getCodvenda());
+                produtosvendidos.setVenda(vendaNew);
             }
             produtosvendidos = em.merge(produtosvendidos);
             if (produtosOld != null && !produtosOld.equals(produtosNew)) {
@@ -105,13 +105,13 @@ public class ProdutosvendidosJpaController implements Serializable {
                 produtosNew.getProdutosvendidosCollection().add(produtosvendidos);
                 produtosNew = em.merge(produtosNew);
             }
-            if (vendadiariaOld != null && !vendadiariaOld.equals(vendadiariaNew)) {
-                vendadiariaOld.getProdutosvendidosCollection().remove(produtosvendidos);
-                vendadiariaOld = em.merge(vendadiariaOld);
+            if (vendaOld != null && !vendaOld.equals(vendaNew)) {
+                vendaOld.getProdutosvendidosCollection().remove(produtosvendidos);
+                vendaOld = em.merge(vendaOld);
             }
-            if (vendadiariaNew != null && !vendadiariaNew.equals(vendadiariaOld)) {
-                vendadiariaNew.getProdutosvendidosCollection().add(produtosvendidos);
-                vendadiariaNew = em.merge(vendadiariaNew);
+            if (vendaNew != null && !vendaNew.equals(vendaOld)) {
+                vendaNew.getProdutosvendidosCollection().add(produtosvendidos);
+                vendaNew = em.merge(vendaNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -147,10 +147,10 @@ public class ProdutosvendidosJpaController implements Serializable {
                 produtos.getProdutosvendidosCollection().remove(produtosvendidos);
                 produtos = em.merge(produtos);
             }
-            Vendadiaria vendadiaria = produtosvendidos.getVendadiaria();
-            if (vendadiaria != null) {
-                vendadiaria.getProdutosvendidosCollection().remove(produtosvendidos);
-                vendadiaria = em.merge(vendadiaria);
+            Venda venda = produtosvendidos.getVenda();
+            if (venda != null) {
+                venda.getProdutosvendidosCollection().remove(produtosvendidos);
+                venda = em.merge(venda);
             }
             em.remove(produtosvendidos);
             em.getTransaction().commit();

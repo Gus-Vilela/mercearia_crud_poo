@@ -17,25 +17,17 @@ import javax.persistence.Embeddable;
 public class ProdutosvendidosPK implements Serializable {
 
     @Basic(optional = false)
-    @Column(name = "CODVENDA")
-    private int codvenda;
-    @Basic(optional = false)
     @Column(name = "CODPRODUTO")
     private int codproduto;
+    @Basic(optional = false)
+    @Column(name = "CODVENDA")
+    private int codvenda;
 
     public ProdutosvendidosPK() {
     }
 
-    public ProdutosvendidosPK(int codvenda, int codproduto) {
-        this.codvenda = codvenda;
+    public ProdutosvendidosPK(int codproduto, int codvenda) {
         this.codproduto = codproduto;
-    }
-
-    public int getCodvenda() {
-        return codvenda;
-    }
-
-    public void setCodvenda(int codvenda) {
         this.codvenda = codvenda;
     }
 
@@ -47,11 +39,19 @@ public class ProdutosvendidosPK implements Serializable {
         this.codproduto = codproduto;
     }
 
+    public int getCodvenda() {
+        return codvenda;
+    }
+
+    public void setCodvenda(int codvenda) {
+        this.codvenda = codvenda;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (int) codvenda;
         hash += (int) codproduto;
+        hash += (int) codvenda;
         return hash;
     }
 
@@ -62,10 +62,10 @@ public class ProdutosvendidosPK implements Serializable {
             return false;
         }
         ProdutosvendidosPK other = (ProdutosvendidosPK) object;
-        if (this.codvenda != other.codvenda) {
+        if (this.codproduto != other.codproduto) {
             return false;
         }
-        if (this.codproduto != other.codproduto) {
+        if (this.codvenda != other.codvenda) {
             return false;
         }
         return true;
@@ -73,7 +73,7 @@ public class ProdutosvendidosPK implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.ProdutosvendidosPK[ codvenda=" + codvenda + ", codproduto=" + codproduto + " ]";
+        return "entidades.ProdutosvendidosPK[ codproduto=" + codproduto + ", codvenda=" + codvenda + " ]";
     }
     
 }

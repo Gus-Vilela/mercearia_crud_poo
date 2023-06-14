@@ -9,7 +9,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import entidades.Vendadiaria;
+import entidades.Venda;
 import entidades.Vendedor;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,27 +35,27 @@ public class VendedorJpaController implements Serializable {
     }
 
     public void create(Vendedor vendedor) {
-        if (vendedor.getVendadiariaCollection() == null) {
-            vendedor.setVendadiariaCollection(new ArrayList<Vendadiaria>());
+        if (vendedor.getVendaCollection() == null) {
+            vendedor.setVendaCollection(new ArrayList<Venda>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Collection<Vendadiaria> attachedVendadiariaCollection = new ArrayList<Vendadiaria>();
-            for (Vendadiaria vendadiariaCollectionVendadiariaToAttach : vendedor.getVendadiariaCollection()) {
-                vendadiariaCollectionVendadiariaToAttach = em.getReference(vendadiariaCollectionVendadiariaToAttach.getClass(), vendadiariaCollectionVendadiariaToAttach.getCodvenda());
-                attachedVendadiariaCollection.add(vendadiariaCollectionVendadiariaToAttach);
+            Collection<Venda> attachedVendaCollection = new ArrayList<Venda>();
+            for (Venda vendaCollectionVendaToAttach : vendedor.getVendaCollection()) {
+                vendaCollectionVendaToAttach = em.getReference(vendaCollectionVendaToAttach.getClass(), vendaCollectionVendaToAttach.getCodvenda());
+                attachedVendaCollection.add(vendaCollectionVendaToAttach);
             }
-            vendedor.setVendadiariaCollection(attachedVendadiariaCollection);
+            vendedor.setVendaCollection(attachedVendaCollection);
             em.persist(vendedor);
-            for (Vendadiaria vendadiariaCollectionVendadiaria : vendedor.getVendadiariaCollection()) {
-                Vendedor oldCodvendedorOfVendadiariaCollectionVendadiaria = vendadiariaCollectionVendadiaria.getCodvendedor();
-                vendadiariaCollectionVendadiaria.setCodvendedor(vendedor);
-                vendadiariaCollectionVendadiaria = em.merge(vendadiariaCollectionVendadiaria);
-                if (oldCodvendedorOfVendadiariaCollectionVendadiaria != null) {
-                    oldCodvendedorOfVendadiariaCollectionVendadiaria.getVendadiariaCollection().remove(vendadiariaCollectionVendadiaria);
-                    oldCodvendedorOfVendadiariaCollectionVendadiaria = em.merge(oldCodvendedorOfVendadiariaCollectionVendadiaria);
+            for (Venda vendaCollectionVenda : vendedor.getVendaCollection()) {
+                Vendedor oldCodvendedorOfVendaCollectionVenda = vendaCollectionVenda.getCodvendedor();
+                vendaCollectionVenda.setCodvendedor(vendedor);
+                vendaCollectionVenda = em.merge(vendaCollectionVenda);
+                if (oldCodvendedorOfVendaCollectionVenda != null) {
+                    oldCodvendedorOfVendaCollectionVenda.getVendaCollection().remove(vendaCollectionVenda);
+                    oldCodvendedorOfVendaCollectionVenda = em.merge(oldCodvendedorOfVendaCollectionVenda);
                 }
             }
             em.getTransaction().commit();
@@ -72,36 +72,36 @@ public class VendedorJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Vendedor persistentVendedor = em.find(Vendedor.class, vendedor.getCodvendedor());
-            Collection<Vendadiaria> vendadiariaCollectionOld = persistentVendedor.getVendadiariaCollection();
-            Collection<Vendadiaria> vendadiariaCollectionNew = vendedor.getVendadiariaCollection();
+            Collection<Venda> vendaCollectionOld = persistentVendedor.getVendaCollection();
+            Collection<Venda> vendaCollectionNew = vendedor.getVendaCollection();
             List<String> illegalOrphanMessages = null;
-            for (Vendadiaria vendadiariaCollectionOldVendadiaria : vendadiariaCollectionOld) {
-                if (!vendadiariaCollectionNew.contains(vendadiariaCollectionOldVendadiaria)) {
+            for (Venda vendaCollectionOldVenda : vendaCollectionOld) {
+                if (!vendaCollectionNew.contains(vendaCollectionOldVenda)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
                     }
-                    illegalOrphanMessages.add("You must retain Vendadiaria " + vendadiariaCollectionOldVendadiaria + " since its codvendedor field is not nullable.");
+                    illegalOrphanMessages.add("You must retain Venda " + vendaCollectionOldVenda + " since its codvendedor field is not nullable.");
                 }
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            Collection<Vendadiaria> attachedVendadiariaCollectionNew = new ArrayList<Vendadiaria>();
-            for (Vendadiaria vendadiariaCollectionNewVendadiariaToAttach : vendadiariaCollectionNew) {
-                vendadiariaCollectionNewVendadiariaToAttach = em.getReference(vendadiariaCollectionNewVendadiariaToAttach.getClass(), vendadiariaCollectionNewVendadiariaToAttach.getCodvenda());
-                attachedVendadiariaCollectionNew.add(vendadiariaCollectionNewVendadiariaToAttach);
+            Collection<Venda> attachedVendaCollectionNew = new ArrayList<Venda>();
+            for (Venda vendaCollectionNewVendaToAttach : vendaCollectionNew) {
+                vendaCollectionNewVendaToAttach = em.getReference(vendaCollectionNewVendaToAttach.getClass(), vendaCollectionNewVendaToAttach.getCodvenda());
+                attachedVendaCollectionNew.add(vendaCollectionNewVendaToAttach);
             }
-            vendadiariaCollectionNew = attachedVendadiariaCollectionNew;
-            vendedor.setVendadiariaCollection(vendadiariaCollectionNew);
+            vendaCollectionNew = attachedVendaCollectionNew;
+            vendedor.setVendaCollection(vendaCollectionNew);
             vendedor = em.merge(vendedor);
-            for (Vendadiaria vendadiariaCollectionNewVendadiaria : vendadiariaCollectionNew) {
-                if (!vendadiariaCollectionOld.contains(vendadiariaCollectionNewVendadiaria)) {
-                    Vendedor oldCodvendedorOfVendadiariaCollectionNewVendadiaria = vendadiariaCollectionNewVendadiaria.getCodvendedor();
-                    vendadiariaCollectionNewVendadiaria.setCodvendedor(vendedor);
-                    vendadiariaCollectionNewVendadiaria = em.merge(vendadiariaCollectionNewVendadiaria);
-                    if (oldCodvendedorOfVendadiariaCollectionNewVendadiaria != null && !oldCodvendedorOfVendadiariaCollectionNewVendadiaria.equals(vendedor)) {
-                        oldCodvendedorOfVendadiariaCollectionNewVendadiaria.getVendadiariaCollection().remove(vendadiariaCollectionNewVendadiaria);
-                        oldCodvendedorOfVendadiariaCollectionNewVendadiaria = em.merge(oldCodvendedorOfVendadiariaCollectionNewVendadiaria);
+            for (Venda vendaCollectionNewVenda : vendaCollectionNew) {
+                if (!vendaCollectionOld.contains(vendaCollectionNewVenda)) {
+                    Vendedor oldCodvendedorOfVendaCollectionNewVenda = vendaCollectionNewVenda.getCodvendedor();
+                    vendaCollectionNewVenda.setCodvendedor(vendedor);
+                    vendaCollectionNewVenda = em.merge(vendaCollectionNewVenda);
+                    if (oldCodvendedorOfVendaCollectionNewVenda != null && !oldCodvendedorOfVendaCollectionNewVenda.equals(vendedor)) {
+                        oldCodvendedorOfVendaCollectionNewVenda.getVendaCollection().remove(vendaCollectionNewVenda);
+                        oldCodvendedorOfVendaCollectionNewVenda = em.merge(oldCodvendedorOfVendaCollectionNewVenda);
                     }
                 }
             }
@@ -135,12 +135,12 @@ public class VendedorJpaController implements Serializable {
                 throw new NonexistentEntityException("The vendedor with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            Collection<Vendadiaria> vendadiariaCollectionOrphanCheck = vendedor.getVendadiariaCollection();
-            for (Vendadiaria vendadiariaCollectionOrphanCheckVendadiaria : vendadiariaCollectionOrphanCheck) {
+            Collection<Venda> vendaCollectionOrphanCheck = vendedor.getVendaCollection();
+            for (Venda vendaCollectionOrphanCheckVenda : vendaCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }
-                illegalOrphanMessages.add("This Vendedor (" + vendedor + ") cannot be destroyed since the Vendadiaria " + vendadiariaCollectionOrphanCheckVendadiaria + " in its vendadiariaCollection field has a non-nullable codvendedor field.");
+                illegalOrphanMessages.add("This Vendedor (" + vendedor + ") cannot be destroyed since the Venda " + vendaCollectionOrphanCheckVenda + " in its vendaCollection field has a non-nullable codvendedor field.");
             }
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
