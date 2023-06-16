@@ -47,8 +47,7 @@ public class Venda implements Serializable {
     @Column(name = "FORMAPAGTO")
     private Pagamento formapagto;
     @Basic(optional = false)
-    @Column(name = "DATAVENDA")
-    
+    @Column(name = "DATAVENDA", columnDefinition = "DATE")
     private LocalDate datavenda;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "venda")
     private Collection<Produtosvendidos> produtosvendidosCollection;

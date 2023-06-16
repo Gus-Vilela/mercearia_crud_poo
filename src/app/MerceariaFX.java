@@ -7,6 +7,7 @@ package app;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -20,14 +21,13 @@ public class MerceariaFX extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException{
         FXMLLoader carregador = new FXMLLoader();
-        String nomeTela = "./telas/FXML.fxml";
+        String nomeTela = "./telas/TelaPrincipal.fxml";
 
-        AnchorPane root = (AnchorPane) carregador.load(getClass().getClassLoader()
+        Parent root = carregador.load(getClass().getClassLoader()
                 .getResource(nomeTela));
         
         Scene scene = new Scene(root);
         
-        primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
