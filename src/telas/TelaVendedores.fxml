@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="fxcontroles.TelaVendedoresController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaVendedoresController">
    <children>
       <TableView fx:id="tableVendedores" layoutX="27.0" layoutY="125.0" prefHeight="351.0" prefWidth="473.0">
         <columns>
@@ -20,19 +19,21 @@
             <TableColumn fx:id="comissaoCol" prefWidth="117.0" text=" Comissão %" />
         </columns>
       </TableView>
-      <TextField fx:id="inputId" layoutX="620.0" layoutY="200.0" prefHeight="25.0" prefWidth="204.0" />
-      <TextField fx:id="inputNome" layoutX="620.0" layoutY="250.0" prefHeight="25.0" prefWidth="204.0" />
-      <TextField fx:id="salarioInput" layoutX="620.0" layoutY="300.0" prefHeight="25.0" prefWidth="204.0" />
-      <TextField fx:id="comissaoInput" layoutX="620.0" layoutY="350.0" prefHeight="25.0" prefWidth="204.0" />
-      <Label layoutX="620.0" layoutY="180.0" text="id" />
-      <Label layoutX="620.0" layoutY="230.0" text="Nome" />
-      <Label layoutX="620.0" layoutY="280.0" text="Salário base" />
-      <Label layoutX="620.0" layoutY="330.0" text="Porcentagem de comissão" />
-      <Button fx:id="adicionar" layoutX="696.0" layoutY="400.0" mnemonicParsing="false" text="Adicionar" />
-      <Text layoutX="666.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Novo Vendedor">
+      <TextField fx:id="inputNome" layoutX="627.0" layoutY="223.0" prefHeight="25.0" prefWidth="204.0" />
+      <TextField fx:id="inputSalario" layoutX="627.0" layoutY="273.0" prefHeight="25.0" prefWidth="204.0" />
+      <TextField fx:id="inputComissao" layoutX="627.0" layoutY="323.0" prefHeight="25.0" prefWidth="204.0" />
+      <Label layoutX="627.0" layoutY="203.0" text="Nome" />
+      <Label layoutX="627.0" layoutY="253.0" text="Salário base" />
+      <Label layoutX="627.0" layoutY="303.0" text="Porcentagem de comissão" />
+      <Button fx:id="adicionar" layoutX="703.0" layoutY="375.0" mnemonicParsing="false" onAction="#adicionarVendedor" text="Adicionar" />
+      <Text layoutX="657.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Vendedor">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
+      <Text fx:id="reqNome" fill="#c30b0b" layoutX="660.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fx:id="reqComissao" fill="#c30b0b" layoutX="767.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fx:id="reqSalario" fill="#c30b0b" layoutX="691.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fx:id="campoObri" fill="#c30b0b" layoutX="681.0" layoutY="366.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Campo Obrigatório" />
    </children>
 </AnchorPane>
