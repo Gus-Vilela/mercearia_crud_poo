@@ -6,12 +6,18 @@ package fxcontroles;
 
 import DAO.VendedorDAO;
 import entidades.Vendedor;
+import java.io.IOException;
 import static java.lang.Double.parseDouble;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -20,6 +26,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeListener;
 
@@ -32,6 +39,9 @@ public class TelaVendedoresController implements Initializable {
     private VendedorDAO banco;
     private short flag;
     private Vendedor vendedor;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
     @FXML
     private TableView<Vendedor> tableVendedores;
     @FXML
@@ -89,7 +99,7 @@ public class TelaVendedoresController implements Initializable {
     
     
     @FXML
-    private void adicionarVendedor(){
+    private void addVendor(){
         flag = 0;
         if ("".equals(inputNome.getText())){
             campoObri.setOpacity(1);
@@ -132,5 +142,27 @@ public class TelaVendedoresController implements Initializable {
             }
         }
         
+    }
+    @FXML
+    private void switchScene(ActionEvent event){
+        try{
+        FXMLLoader carregador = new FXMLLoader();
+        String nomeTela = "./telas/TelaPrincipal"
+                + ".fxml";
+
+        Parent root = carregador.load(getClass().getClassLoader()
+                .getResource(nomeTela));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        }catch(IOException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText(null);
+                alert.setContentText("Erro: " + e.getMessage());
+                alert.showAndWait();
+            
+        }
     }
 }

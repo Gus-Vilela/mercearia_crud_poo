@@ -25,7 +25,7 @@
       <Label layoutX="627.0" layoutY="203.0" text="Nome" />
       <Label layoutX="627.0" layoutY="253.0" text="Salário base" />
       <Label layoutX="627.0" layoutY="303.0" text="Porcentagem de comissão" />
-      <Button fx:id="adicionar" layoutX="703.0" layoutY="375.0" mnemonicParsing="false" onAction="#adicionarVendedor" text="Adicionar" />
+      <Button fx:id="adicionar" layoutX="703.0" layoutY="375.0" mnemonicParsing="false" onAction="#addVendor" text="Adicionar" />
       <Text layoutX="657.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Vendedor">
          <font>
             <Font size="18.0" />
@@ -35,5 +35,11 @@
       <Text fx:id="reqComissao" fill="#c30b0b" layoutX="767.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
       <Text fx:id="reqSalario" fill="#c30b0b" layoutX="691.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
       <Text fx:id="campoObri" fill="#c30b0b" layoutX="681.0" layoutY="366.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Campo Obrigatório" />
+      <Button fx:id="voltar" layoutX="447.0" layoutY="530.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="27.0" prefWidth="111.0" text="Voltar" />
+      <Text layoutX="455.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vendedores">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

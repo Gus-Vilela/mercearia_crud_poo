@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -41,7 +42,8 @@ public class TelaPrincipalController implements Initializable {
     }    
     
     @FXML
-    public void switchScene(ActionEvent event) throws IOException {
+    public void switchScene(ActionEvent event)  {
+        try{
         FXMLLoader carregador = new FXMLLoader();
         String nomeTela = "./telas/TelaVendedores"
                 + ".fxml";
@@ -52,6 +54,14 @@ public class TelaPrincipalController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        }catch(IOException e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText(null);
+                alert.setContentText("Erro: " + e.getMessage());
+                alert.showAndWait();
+            
+        }
     }
     
 }
