@@ -68,6 +68,8 @@ public class TelaVendedoresController implements Initializable {
     private Text reqSalario;
     @FXML
     private Text campoObri;
+    @FXML
+    private Button TelaPrincipal;
     
 
     /**
@@ -143,14 +145,17 @@ public class TelaVendedoresController implements Initializable {
         
     }
     @FXML
-    private void switchScene(ActionEvent event){
+    public void switchScene(ActionEvent event)  {
         try{
+        Button btn = (Button)event.getSource();
+        String nomeTela = btn.getId();
+        
         FXMLLoader carregador = new FXMLLoader();
-        String nomeTela = "./telas/TelaPrincipal"
-                + ".fxml";
-
+        String caminhoTela = "./telas/" + nomeTela
+                + ".fxml";     
+        
         Parent root = carregador.load(getClass().getClassLoader()
-                .getResource(nomeTela));
+                .getResource(caminhoTela));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

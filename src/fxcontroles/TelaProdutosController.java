@@ -6,8 +6,12 @@ package fxcontroles;
 
 import DAO.ProdutosDAO;
 import entidades.Produtos;
+import entidades.ProdutosImg;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -22,6 +26,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -38,19 +44,20 @@ public class TelaProdutosController implements Initializable {
     @FXML
     private Button novoProdBtn;
     @FXML
-    private TableView<Produtos> tableProdutos;
+    private TableView<ProdutosImg> tableProdutos;
     @FXML
-    private TableColumn<Produtos, String> descCol;
+    private TableColumn<ProdutosImg, String> descCol;
     @FXML
-    private TableColumn<Produtos, Double> precoCol;
+    private TableColumn<ProdutosImg, Double> precoCol;
     @FXML
-    private TableColumn<Produtos, String> imgCol;
+    private TableColumn<ProdutosImg, ImageView> imgCol;
     @FXML
-    private TableColumn<Produtos, String> medidaCol;
+    private TableColumn<ProdutosImg, String> medidaCol;
     @FXML
-    private TableColumn<Produtos, Integer> idCol;
+    private TableColumn<ProdutosImg, Integer> idCol;
     @FXML
     private Button TelaPrincipal;
+    private ImageView ovo;
 
     /**
      * Initializes the controller class.
@@ -65,23 +72,42 @@ public class TelaProdutosController implements Initializable {
             e.printStackTrace();
         }
         initializeTable();
+        
+        
     }    
     
      private void initializeTable(){
-        idCol.setCellValueFactory(new PropertyValueFactory<>("codproduto"));
-        descCol.setCellValueFactory(new PropertyValueFactory<>("descProduto"));
-        precoCol.setCellValueFactory(new PropertyValueFactory<>("preco"));
-        imgCol.setCellValueFactory(new PropertyValueFactory<>("imagem"));
-        medidaCol.setCellValueFactory(new PropertyValueFactory<>("unidadeMedida"));
+        try{
+            List<Produtos> lista= banco.getAll();
+            List<ProdutosImg> listaImg = new ArrayList<ProdutosImg>();
+            for(Produtos produto : lista){
+                listaImg.add(new ProdutosImg(produto.getCodproduto(),
+                        produto.getDescProduto(),produto.getPreco(),
+                        produto.getImagem(),produto.getUnidadeMedida())); 
+            }
+
+            idCol.setCellValueFactory(new PropertyValueFactory<>("codproduto"));
+            descCol.setCellValueFactory(new PropertyValueFactory<>("descProduto"));
+            precoCol.setCellValueFactory(new PropertyValueFactory<>("preco"));
+            imgCol.setCellValueFactory(new PropertyValueFactory<ProdutosImg, ImageView>("imagem"));
+            medidaCol.setCellValueFactory(new PropertyValueFactory<>("unidadeMedida"));
+
+            tableProdutos.setItems(FXCollections.observableArrayList(listaImg));
+        }catch(Exception e){
+            System.out.println(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText(null);
+                alert.setContentText("Erro: " + e.getMessage());
+                alert.showAndWait();
+        }
         
-        tableProdutos.setItems(FXCollections.observableArrayList(banco.getAll()));
     }
      
     @FXML
     public void switchScene(ActionEvent event)  {
         try{
         Button btn = (Button)event.getSource();
-        System.out.println(btn.getId());
         String nomeTela = btn.getId();
         
         FXMLLoader carregador = new FXMLLoader();

@@ -47,7 +47,6 @@ public class TelaPrincipalController implements Initializable {
     public void switchScene(ActionEvent event)  {
         try{
         Button btn = (Button)event.getSource();
-        System.out.println(btn.getId());
         String nomeTela = btn.getId();
         
         FXMLLoader carregador = new FXMLLoader();

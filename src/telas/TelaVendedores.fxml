@@ -35,7 +35,7 @@
       <Text fx:id="reqComissao" fill="#c30b0b" layoutX="767.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
       <Text fx:id="reqSalario" fill="#c30b0b" layoutX="691.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
       <Text fx:id="campoObri" fill="#c30b0b" layoutX="681.0" layoutY="366.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Campo Obrigatório" />
-      <Button fx:id="voltar" layoutX="447.0" layoutY="530.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="27.0" prefWidth="111.0" text="Voltar" />
+      <Button fx:id="TelaPrincipal" layoutX="447.0" layoutY="530.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="27.0" prefWidth="111.0" text="Voltar" />
       <Text layoutX="455.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vendedores">
          <font>
             <Font size="25.0" />

@@ -4,8 +4,11 @@
  */
 package entidades;
 
+
 import java.io.Serializable;
 import java.util.Collection;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,7 +54,8 @@ public class Produtos implements Serializable {
     private String unidadeMedida;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "produtos")
     private Collection<Produtosvendidos> produtosvendidosCollection;
-
+    
+    
     public Produtos() {
     }
 
