@@ -4,13 +4,12 @@
  */
 package fxcontroles;
 
-import DAO.VendedorDAO;
-import entidades.Vendedor;
+import DAO.ProdutosDAO;
+import entidades.Produtos;
 import java.io.IOException;
 import static java.lang.Double.parseDouble;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,10 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -34,42 +30,27 @@ import javax.swing.JOptionPane;
  *
  * @author gusta
  */
-public class TelaVendedoresController implements Initializable {
-    private VendedorDAO banco;
+public class TelaNovoProdutoController implements Initializable {
+    
+    private ProdutosDAO banco;
     private short flag;
-    private Vendedor vendedor;
+    private Produtos Produtos;
     private Stage stage;
     private Scene scene;
     private Parent root;
     @FXML
-    private TableView<Vendedor> tableVendedores;
+    private TextField inputDesc;
     @FXML
-    private TableColumn<Vendedor, Integer> idCol;
+    private TextField inputPreco;
     @FXML
-    private TableColumn<Vendedor, String> nomeCol;
+    private TextField inputImg;
     @FXML
-    private TableColumn<Vendedor, Double> salarioCol;
-    @FXML
-    private TableColumn<Vendedor, Double> comissaoCol;
-    @FXML
-    private TextField inputNome;
-    @FXML
-    private TextField inputSalario;
-    @FXML
-    private TextField inputComissao;
+    private TextField InputMedida;
     @FXML
     private Button adicionar;
-    
-    @FXML
-    private Text reqNome;
-    @FXML
-    private Text reqComissao;
-    @FXML
-    private Text reqSalario;
     @FXML
     private Text campoObri;
-    @FXML
-    private Button TelaPrincipal;
+    
     
 
     /**
@@ -77,62 +58,51 @@ public class TelaVendedoresController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         try {
-            banco = new VendedorDAO();    // TODO
+        try {
+            banco = new ProdutosDAO();    // TODO
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro na inicialização do banco",
                     JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-        initializeTable();
+        
     }    
     
-    
-    private void initializeTable(){
-        idCol.setCellValueFactory(new PropertyValueFactory<>("codvendedor"));
-        nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        salarioCol.setCellValueFactory(new PropertyValueFactory<>("salariobase"));
-        comissaoCol.setCellValueFactory(new PropertyValueFactory<>("perccomissao"));
-        
-        tableVendedores.setItems(FXCollections.observableArrayList(banco.getAll()));
-    }
-    
-    
-    
     @FXML
-    private void addVendor(ActionEvent event){
+    private void addProduct(ActionEvent event){
         flag = 0;
-        if ("".equals(inputNome.getText())){
+        if ("".equals(inputDesc.getText())){
             campoObri.setOpacity(1);
-            inputNome.setStyle("-fx-border-color:red;");
+            inputDesc.setStyle("-fx-border-color:red;");
             flag = 1;
-        }else{inputNome.setStyle("-fx-border-color:grey;");}
-        if ("".equals(inputSalario.getText())){
+        }else{inputDesc.setStyle("-fx-border-color:grey;");}
+        if ("".equals(inputPreco.getText())){
             campoObri.setOpacity(1);
-            inputSalario.setStyle("-fx-border-color:red;");
+            inputPreco.setStyle("-fx-border-color:red;");
             flag = 1;
-        }else{inputSalario.setStyle("-fx-border-color:grey;");}
-        if ("".equals(inputComissao.getText())){
+        }else{inputPreco.setStyle("-fx-border-color:grey;");}
+        if ("".equals(InputMedida.getText())){
             campoObri.setOpacity(1);
-            inputComissao.setStyle("-fx-border-color:red;");
+            InputMedida.setStyle("-fx-border-color:red;");
             flag = 1;
-        }else{inputComissao.setStyle("-fx-border-color:grey;");}
+        }else{InputMedida.setStyle("-fx-border-color:grey;");}
         
         if(flag == 0){
             try{
-                vendedor = new Vendedor();
-                vendedor.setNome(inputNome.getText());
-                vendedor.setSalariobase(parseDouble(inputSalario.getText()));
-                vendedor.setPerccomissao(parseDouble(inputComissao.getText()));
+                Produtos = new Produtos();
+                Produtos.setDescProduto(inputDesc.getText());
+                Produtos.setPreco(parseDouble(inputPreco.getText()));
+                Produtos.setImagem(inputImg.getText());
+                Produtos.setUnidadeMedida(InputMedida.getText());
                 
-                banco.add(vendedor);
+                banco.add(Produtos);
                 
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Cadastro Realizado");
                 alert.setHeaderText(null);
-                alert.setContentText("Vendedor Cadastrado!");
+                alert.setContentText("Produtos Cadastrado!");
                 alert.showAndWait();
-                initializeTable();
+                
                 
             }catch(Exception e){
                 Alert alert = new Alert(AlertType.ERROR);
@@ -143,7 +113,7 @@ public class TelaVendedoresController implements Initializable {
             }
         }
         
-    }
+    }    
     @FXML
     public void switchScene(ActionEvent event)  {
         try{

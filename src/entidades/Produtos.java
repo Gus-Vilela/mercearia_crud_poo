@@ -7,8 +7,6 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

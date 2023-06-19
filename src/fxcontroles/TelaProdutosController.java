@@ -42,8 +42,6 @@ public class TelaProdutosController implements Initializable {
     private Parent root;
     private ProdutosDAO banco;
     @FXML
-    private Button novoProdBtn;
-    @FXML
     private TableView<ProdutosImg> tableProdutos;
     @FXML
     private TableColumn<ProdutosImg, String> descCol;
@@ -58,6 +56,8 @@ public class TelaProdutosController implements Initializable {
     @FXML
     private Button TelaPrincipal;
     private ImageView ovo;
+    @FXML
+    private Button TelaNovoProduto;
 
     /**
      * Initializes the controller class.
