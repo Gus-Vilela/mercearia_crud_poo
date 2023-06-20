@@ -3,11 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/telas/TelaProdutosStyleSheet.css</file>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/app/MerceariaFX.java</file>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/entidades/ProdutosImg.java</file>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/telas/TelaProdutos.fxml</file>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/entidades/Produtos.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/fxcontroles/TelaNovoProdutoController.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/fxcontroles/TelaNovaVendaController.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/entidades/ProdutosVenda.java</file>
             <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/fxcontroles/TelaProdutosController.java</file>
         </group>
     </open-files>

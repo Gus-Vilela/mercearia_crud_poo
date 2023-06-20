@@ -4,12 +4,14 @@
  */
 package fxcontroles;
 
-import DAO.ProdutosDAO;
-import entidades.Produtos;
+import DAO.VendaDAO;
+import entidades.Venda;
 import java.io.IOException;
-import static java.lang.Double.parseDouble;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,10 +20,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -30,28 +32,24 @@ import javax.swing.JOptionPane;
  *
  * @author gusta
  */
-public class TelaNovoProdutoController implements Initializable {
-    
-    private ProdutosDAO banco;
-    private short flag;
-    private Produtos Produtos;
+public class TelaVendasController implements Initializable {
     private Stage stage;
     private Scene scene;
-    private Parent root;
+    private VendaDAO banco;
     @FXML
-    private TextField inputDesc;
+    private TableColumn<Venda, Integer> idCol;
     @FXML
-    private TextField inputPreco;
+    private TableColumn<Venda, String> pagCol;
     @FXML
-    private TextField inputImg;
+    private TableColumn<Venda, LocalDate> dataCol;
     @FXML
-    private TextField InputMedida;
+    private TableColumn<Venda, String> vendedorCol;
     @FXML
-    private Button adicionar;
+    private TableView<Venda> tableVendas;
     @FXML
-    private Text campoObri;
-    
-    
+    private Button TelaNovaVenda;
+    @FXML
+    private Button TelaPrincipal;
 
     /**
      * Initializes the controller class.
@@ -59,61 +57,37 @@ public class TelaNovoProdutoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            banco = new ProdutosDAO();    
+            banco = new VendaDAO();    // TODO
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Erro na inicialização do banco",
                     JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-        
+        initializeTable();
     }    
     
-    @FXML
-    private void addProduct(ActionEvent event){
-        flag = 0;
-        if ("".equals(inputDesc.getText())){
-            campoObri.setOpacity(1);
-            inputDesc.setStyle("-fx-border-color:red;");
-            flag = 1;
-        }else{inputDesc.setStyle("-fx-border-color:grey;");}
-        if ("".equals(inputPreco.getText())){
-            campoObri.setOpacity(1);
-            inputPreco.setStyle("-fx-border-color:red;");
-            flag = 1;
-        }else{inputPreco.setStyle("-fx-border-color:grey;");}
-        if ("".equals(InputMedida.getText())){
-            campoObri.setOpacity(1);
-            InputMedida.setStyle("-fx-border-color:red;");
-            flag = 1;
-        }else{InputMedida.setStyle("-fx-border-color:grey;");}
+    private void initializeTable(){
+        try{
+        idCol.setCellValueFactory(new PropertyValueFactory<>("codvenda"));
+        pagCol.setCellValueFactory(new PropertyValueFactory<>("formapagto"));
+        dataCol.setCellValueFactory(new PropertyValueFactory<>("datavenda"));
+        vendedorCol.setCellValueFactory(cellData -> {
+            Venda venda = cellData.getValue();
+            String nomeVendedor = venda.getCodvendedor().getNome();
+            return new SimpleStringProperty(nomeVendedor);
+        });
         
-        if(flag == 0){
-            try{
-                Produtos = new Produtos();
-                Produtos.setDescProduto(inputDesc.getText());
-                Produtos.setPreco(parseDouble(inputPreco.getText()));
-                Produtos.setImagem(inputImg.getText());
-                Produtos.setUnidadeMedida(InputMedida.getText());
-                
-                banco.add(Produtos);
-                
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Cadastro Realizado");
-                alert.setHeaderText(null);
-                alert.setContentText("Produto Cadastrado!");
-                alert.showAndWait();
-                
-                
-            }catch(Exception e){
-                Alert alert = new Alert(AlertType.ERROR);
+        tableVendas.setItems(FXCollections.observableArrayList(banco.getAll()));
+        }catch(Exception e){
+            System.out.println(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText(null);
                 alert.setContentText("Erro: " + e.getMessage());
                 alert.showAndWait();
-            }
         }
-        
-    }    
+    }
+    
     @FXML
     public void switchScene(ActionEvent event)  {
         try{

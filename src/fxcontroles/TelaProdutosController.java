@@ -7,7 +7,6 @@ package fxcontroles;
 import DAO.ProdutosDAO;
 import entidades.Produtos;
 import entidades.ProdutosImg;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,7 +25,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -55,7 +53,6 @@ public class TelaProdutosController implements Initializable {
     private TableColumn<ProdutosImg, Integer> idCol;
     @FXML
     private Button TelaPrincipal;
-    private ImageView ovo;
     @FXML
     private Button TelaNovoProduto;
 
@@ -96,10 +93,10 @@ public class TelaProdutosController implements Initializable {
         }catch(Exception e){
             System.out.println(e);
             Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro");
-                alert.setHeaderText(null);
-                alert.setContentText("Erro: " + e.getMessage());
-                alert.showAndWait();
+            alert.setTitle("Erro");
+            alert.setHeaderText(null);
+            alert.setContentText("Erro: " + e.getMessage());
+            alert.showAndWait();
         }
         
     }

@@ -89,12 +89,21 @@ public class TelaVendedoresController implements Initializable {
     
     
     private void initializeTable(){
+        try{
         idCol.setCellValueFactory(new PropertyValueFactory<>("codvendedor"));
         nomeCol.setCellValueFactory(new PropertyValueFactory<>("nome"));
         salarioCol.setCellValueFactory(new PropertyValueFactory<>("salariobase"));
         comissaoCol.setCellValueFactory(new PropertyValueFactory<>("perccomissao"));
         
         tableVendedores.setItems(FXCollections.observableArrayList(banco.getAll()));
+        }catch(Exception e){
+            System.out.println(e);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erro");
+                alert.setHeaderText(null);
+                alert.setContentText("Erro: " + e.getMessage());
+                alert.showAndWait();
+        }
     }
     
     
