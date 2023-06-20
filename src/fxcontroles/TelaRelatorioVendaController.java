@@ -9,6 +9,7 @@ import entidades.ProdutosVenda;
 import entidades.Vendedor;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Locale;
@@ -41,6 +42,7 @@ public class TelaRelatorioVendaController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+    DecimalFormat decimalFormat;
     @FXML
     private Label vendedorLab;
     @FXML
@@ -67,7 +69,7 @@ public class TelaRelatorioVendaController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Locale.setDefault(new Locale("pt", "BR"));
+        decimalFormat = new DecimalFormat("#0.00");
     }    
     
     public void initializeWithData(Vendedor seller, LocalDate date, Pagamento payment, List<ProdutosVenda> products) {
@@ -89,18 +91,18 @@ public class TelaRelatorioVendaController implements Initializable {
         });
         totalProdCol.setCellValueFactory(cellData -> {
             ProdutosVenda product = cellData.getValue();
-            double totalPrice = product.getPreco() * product.getQuantidade().getValue();
+            double totalPrice = Double.parseDouble(decimalFormat.format(product.getPreco() * product.getQuantidade().getValue()));
             return new SimpleDoubleProperty(totalPrice).asObject();
         });
 
-        // Calculate the total price of the sale
+        
         double total = 0.0;
         for (ProdutosVenda product : products) {
             total += product.getPreco() * product.getQuantidade().getValue();
         }
 
-        // Update the total price label
-        totalLab.setText(String.format("%.2f", total));
+        
+        totalLab.setText(decimalFormat.format( total));
     }
     
     @FXML

@@ -6,17 +6,22 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaPrincipalController">
    <children>
-      <Button fx:id="TelaVendedores" layoutX="332.0" layoutY="231.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="63.0" prefWidth="157.0" text="Vendedores">
+      <Button fx:id="TelaVendedores" layoutX="291.0" layoutY="224.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="63.0" prefWidth="196.0" text="Vendedores">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
-      <Button fx:id="TelaProdutos" layoutX="513.0" layoutY="231.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="63.0" prefWidth="157.0" text="Produtos">
+      <Button fx:id="TelaProdutos" layoutX="513.0" layoutY="224.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="63.0" prefWidth="196.0" text="Produtos">
          <font>
             <Font size="23.0" />
          </font>
       </Button>
-      <Button fx:id="TelaVendas" layoutX="422.0" layoutY="326.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="63.0" prefWidth="157.0" text="Vendas">
+      <Button fx:id="TelaVendas" layoutX="291.0" layoutY="314.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="63.0" prefWidth="196.0" text="Vendas">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="TelaRelatorioDiario" layoutX="513.0" layoutY="314.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="63.0" prefWidth="196.0" text="Relatório Diário">
          <font>
             <Font size="23.0" />
          </font>

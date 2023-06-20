@@ -34,6 +34,10 @@ public class TelaPrincipalController implements Initializable {
     private Button TelaVendedores;
     @FXML
     private Button TelaProdutos;
+    @FXML
+    private Button TelaVendas;
+    @FXML
+    private Button TelaRelatorioDiario;
 
     /**
      * Initializes the controller class.

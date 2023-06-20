@@ -164,7 +164,7 @@ public class TelaNovaVendaController implements Initializable {
                 venda.setCodvendedor(vendedorDAO.getVendedor(vendedorBox.getValue().getCodvendedor()));
                 venda.setFormapagto(pagamentoBox.getValue());
                 venda.setDatavenda(dataVenda.getValue());
-//              vendaDAO.add(venda);
+                vendaDAO.add(venda);
                 
                 produtosvendidosDAO = new ProdutosvendidosDAO();
                 for(ProdutosVenda produto : listaVenda){
@@ -173,7 +173,7 @@ public class TelaNovaVendaController implements Initializable {
                        pv.setProdutos(produtosDAO.getProdutos(produto.getCodproduto()));
                        pv.setQuantidade(produto.getQuantidade().getValue());
                        pv.setVenda(venda);
-//                     produtosvendidosDAO.add(pv);
+                       produtosvendidosDAO.add(pv);
                     }                          
                 }
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);

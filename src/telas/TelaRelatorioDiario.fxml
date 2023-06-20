@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaRelatorioDiarioController">
+   <children>
+      <TableView fx:id="produtosVendidosTable" layoutX="121.0" layoutY="134.0" prefHeight="333.0" prefWidth="759.0">
+        <columns>
+          <TableColumn fx:id="descCol" prefWidth="252.0" text="Produto" />
+          <TableColumn fx:id="quantCol" prefWidth="250.0" text="Quantidade" />
+            <TableColumn fx:id="totalProdCol" prefWidth="256.0" text="Total Vendido por Produto" />
+        </columns>
+      </TableView>
+      <Text layoutX="412.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatório Diário">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Label fx:id="dataLab" layoutX="455.0" layoutY="85.0" text="2000-10-10">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="TelaPrincipal" layoutX="474.0" layoutY="525.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
+      <Label fx:id="totalLab" alignment="CENTER" layoutX="712.0" layoutY="505.0" prefHeight="25.0" prefWidth="95.0" text="Total">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="689.0" layoutY="480.0" text="Total Vendido Hoje:">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
