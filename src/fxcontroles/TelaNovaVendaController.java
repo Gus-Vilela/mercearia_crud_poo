@@ -49,6 +49,7 @@ import javax.swing.JOptionPane;
 public class TelaNovaVendaController implements Initializable {
     private Stage stage;
     private Scene scene;
+    private Parent root;
     private short flag;
     private VendedorDAO vendedorDAO;
     private VendaDAO vendaDAO;
@@ -163,7 +164,7 @@ public class TelaNovaVendaController implements Initializable {
                 venda.setCodvendedor(vendedorDAO.getVendedor(vendedorBox.getValue().getCodvendedor()));
                 venda.setFormapagto(pagamentoBox.getValue());
                 venda.setDatavenda(dataVenda.getValue());
-                vendaDAO.add(venda);
+//              vendaDAO.add(venda);
                 
                 produtosvendidosDAO = new ProdutosvendidosDAO();
                 for(ProdutosVenda produto : listaVenda){
@@ -172,15 +173,16 @@ public class TelaNovaVendaController implements Initializable {
                        pv.setProdutos(produtosDAO.getProdutos(produto.getCodproduto()));
                        pv.setQuantidade(produto.getQuantidade().getValue());
                        pv.setVenda(venda);
-                       produtosvendidosDAO.add(pv);
+//                     produtosvendidosDAO.add(pv);
+                    }                          
                 }
-                
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Cadastro Realizado");
                 alert.setHeaderText(null);
                 alert.setContentText("Venda Cadastrada!");
                 alert.showAndWait();
-        }
+                
+                switchScene(event);
                 
             }catch(Exception e){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -204,23 +206,28 @@ public class TelaNovaVendaController implements Initializable {
         try{
         Button btn = (Button)event.getSource();
         String nomeTela = btn.getId();
+        String caminhoTela = "./telas/" + nomeTela + ".fxml";     
+        FXMLLoader carregador = new FXMLLoader(getClass().getClassLoader().getResource(caminhoTela));
+        root = carregador.load();
         
-        FXMLLoader carregador = new FXMLLoader();
-        String caminhoTela = "./telas/" + nomeTela
-                + ".fxml";     
+        if (nomeTela.equals("TelaRelatorioVenda")) {
+            TelaRelatorioVendaController controller = carregador.getController();
+            controller.initializeWithData(vendedorBox.getValue(), dataVenda.getValue(),
+                    pagamentoBox.getValue(), listaVenda);
+        }
         
-        Parent root = carregador.load(getClass().getClassLoader()
-                .getResource(caminhoTela));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+        
+        
         }catch(IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro");
-                alert.setHeaderText(null);
-                alert.setContentText("Erro: " + e.getMessage());
-                alert.showAndWait();
+            alert.setTitle("Erro");
+            alert.setHeaderText(null);
+            alert.setContentText("Erro: " + e.getMessage());
+            alert.showAndWait();
             
         }
     }

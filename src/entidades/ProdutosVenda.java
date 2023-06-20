@@ -18,6 +18,7 @@ public class ProdutosVenda {
     private ProdutosImg produtosImg;
     private ComboBox<Integer> quantidade;
     private CheckBox check;
+    private Double totalProduto;
 
     public ProdutosVenda(Integer codproduto, String descProduto, double preco, String imagem, String unidadeMedida) {
         this.produtosImg = new ProdutosImg(codproduto, descProduto, preco, imagem, unidadeMedida);
@@ -36,6 +37,8 @@ public class ProdutosVenda {
         // Set CheckBox initial value to false
         this.check = new CheckBox();
         check.setSelected(false);
+        
+        
     }
 
     public Integer getCodproduto() {

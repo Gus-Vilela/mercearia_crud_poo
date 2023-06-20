@@ -22,7 +22,7 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button fx:id="TelaNovaVenda" layoutX="448.0" layoutY="494.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="25.0" prefWidth="102.0" text="Nova Venda" />
+      <Button fx:id="TelaNovaVenda" layoutX="448.0" layoutY="490.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="33.0" prefWidth="102.0" text="Nova Venda" />
       <Button fx:id="TelaPrincipal" layoutX="475.0" layoutY="538.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
    </children>
 </AnchorPane>

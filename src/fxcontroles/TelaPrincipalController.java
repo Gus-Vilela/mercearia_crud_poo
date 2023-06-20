@@ -46,25 +46,24 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     public void switchScene(ActionEvent event)  {
         try{
-        Button btn = (Button)event.getSource();
-        String nomeTela = btn.getId();
+            Button btn = (Button)event.getSource();
+            String nomeTela = btn.getId();
+            String caminhoTela = "./telas/" + nomeTela + ".fxml";     
+            FXMLLoader carregador = new FXMLLoader(getClass().getClassLoader().getResource(caminhoTela));
+            root = carregador.load();
+
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         
-        FXMLLoader carregador = new FXMLLoader();
-        String caminhoTela = "./telas/" + nomeTela
-                + ".fxml";     
         
-        Parent root = carregador.load(getClass().getClassLoader()
-                .getResource(caminhoTela));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
         }catch(IOException e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erro");
-                alert.setHeaderText(null);
-                alert.setContentText("Erro: " + e.getMessage());
-                alert.showAndWait();
+            alert.setTitle("Erro");
+            alert.setHeaderText(null);
+            alert.setContentText("Erro: " + e.getMessage());
+            alert.showAndWait();
             
         }
     }

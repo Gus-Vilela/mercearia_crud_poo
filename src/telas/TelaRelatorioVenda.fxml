@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaRelatorioVendaController">
+   <children>
+      <Label fx:id="vendedorLab" layoutX="252.0" layoutY="128.0" text="Label">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="dataLab" layoutX="485.0" layoutY="128.0" text="Label" />
+      <Label fx:id="pagamentoLab" layoutX="673.0" layoutY="128.0" text="Label" />
+      <TableView fx:id="produtosTable" layoutX="191.0" layoutY="162.0" prefHeight="305.0" prefWidth="621.0">
+        <columns>
+          <TableColumn fx:id="descCol" prefWidth="155.0" text="Produto" />
+          <TableColumn fx:id="precoUniCol" prefWidth="125.0" text="Preço" />
+            <TableColumn fx:id="quantCol" prefWidth="168.0" text="Quantidade" />
+            <TableColumn fx:id="totalProdCol" prefWidth="172.0" text="Total Produto" />
+        </columns>
+      </TableView>
+      <Label layoutX="679.0" layoutY="487.0" text="Valor Total da Venda:" />
+      <Label layoutX="252.0" layoutY="110.0" text="Vendedor:" />
+      <Label layoutX="485.0" layoutY="110.0" text="Data:" />
+      <Label layoutX="673.0" layoutY="110.0" text="Forma de Pagamento:" />
+      <Label fx:id="totalLab" layoutX="721.0" layoutY="506.0" text="Label">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Text layoutX="395.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatório da Venda">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+      <Button fx:id="TelaVendas" layoutX="469.0" layoutY="519.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="31.0" prefWidth="63.0" text="Voltar" />
+   </children>
+</AnchorPane>
