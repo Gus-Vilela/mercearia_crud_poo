@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/fxcontroles/TelaNovoProdutoController.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/fxcontroles/TelaSalariosController.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/DAO/ProdutosDAO.java</file>
             <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/fxcontroles/TelaNovaVendaController.java</file>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/entidades/ProdutosVenda.java</file>
-            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/fxcontroles/TelaProdutosController.java</file>
+            <file>file:/C:/Users/gusta/Desktop/UTFPR/3_Periodo/POO/Mercearia/src/DAO/VendedorDAO.java</file>
         </group>
     </open-files>
 </project-private>
