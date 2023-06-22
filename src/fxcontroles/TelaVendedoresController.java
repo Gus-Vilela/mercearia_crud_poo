@@ -7,8 +7,8 @@ package fxcontroles;
 import DAO.VendedorDAO;
 import entidades.Vendedor;
 import java.io.IOException;
-import static java.lang.Double.parseDouble;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -19,8 +19,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -102,6 +102,39 @@ public class TelaVendedoresController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Erro: " + e.getMessage());
                 alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    public void deleteVendor(){
+        try{
+            Vendedor vendedor = tableVendedores.getSelectionModel().getSelectedItem();
+
+            if(vendedor != null){
+                Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
+                alerta.setTitle("Atenção");
+                alerta.setHeaderText("Confirmação de exclusão");
+                alerta.setContentText("Tem certeza que deseja excluir o vendedor " + vendedor.getNome());
+                Optional<ButtonType> escolha = alerta.showAndWait();
+
+                if(escolha.isPresent() && escolha.get() == ButtonType.OK){
+                    VendedorDAO vendedorDAO = new VendedorDAO();
+                    vendedorDAO.delete(vendedor.getCodvendedor());
+                    initializeTable();
+                }
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Atenção");
+                alert.setHeaderText("Nenhum vendedor selecionado!");
+                alert.setContentText("Selecione o vendedor que deseja excluir.");
+                alert.showAndWait();
+            }
+        }catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText(null);
+            alert.setContentText("Erro: " + e.getMessage());
+            alert.showAndWait();
         }
     }
     

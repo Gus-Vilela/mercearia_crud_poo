@@ -26,6 +26,6 @@
       </Text>
       <Button fx:id="TelaSalarios" layoutX="344.0" layoutY="493.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="33.0" prefWidth="84.0" text="Salários" />
       <Button fx:id="TelaNovoVendedor" layoutX="458.0" layoutY="493.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="33.0" prefWidth="84.0" text="Novo" />
-      <Button layoutX="573.0" layoutY="493.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="84.0" text="Remover" />
+      <Button layoutX="573.0" layoutY="493.0" mnemonicParsing="false" onAction="#deleteVendor" prefHeight="33.0" prefWidth="84.0" text="Remover" />
    </children>
 </AnchorPane>
