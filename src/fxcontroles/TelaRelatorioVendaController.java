@@ -91,7 +91,7 @@ public class TelaRelatorioVendaController implements Initializable {
         });
         totalProdCol.setCellValueFactory(cellData -> {
             ProdutosVenda product = cellData.getValue();
-            double totalPrice = Double.parseDouble(decimalFormat.format(product.getPreco() * product.getQuantidade().getValue()));
+            double totalPrice = Math.floor((product.getPreco() * product.getQuantidade().getValue())*Math.pow(10, 2))/Math.pow(10, 2);
             return new SimpleDoubleProperty(totalPrice).asObject();
         });
 
@@ -102,7 +102,7 @@ public class TelaRelatorioVendaController implements Initializable {
         }
 
         
-        totalLab.setText(decimalFormat.format( total));
+        totalLab.setText(String.format("%.2f", total));
     }
     
     @FXML
