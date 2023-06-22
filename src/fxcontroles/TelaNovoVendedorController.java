@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -43,8 +44,6 @@ public class TelaNovoVendedorController implements Initializable {
     @FXML
     private TextField inputComissao;
     @FXML
-    private Button adicionar;
-    @FXML
     private Text campoObri;
     @FXML
     private Text reqSalario;
@@ -53,7 +52,19 @@ public class TelaNovoVendedorController implements Initializable {
     @FXML
     private Text reqSalario2;
     @FXML
-    private Button voltar;
+    private Button addBtn;
+    private Text titleText;
+    @FXML
+    private Button TelaVendedores;
+    @FXML
+    private Label idLab;
+    @FXML
+    private TextField inputId;
+    @FXML
+    private Text titleText1;
+    @FXML
+    private Text titleText2;
+    
 
     /**
      * Initializes the controller class.
@@ -68,6 +79,19 @@ public class TelaNovoVendedorController implements Initializable {
             e.printStackTrace();
         }
     }    
+    
+    public void initializeWithData(Vendedor vendedor){
+       this.vendedor = vendedor;
+       titleText1.setOpacity(0);
+       titleText2.setOpacity(1);
+       idLab.setOpacity(1);
+       inputId.setOpacity(1);
+       inputId.setText(""+vendedor.getCodvendedor());
+       inputNome.setText(vendedor.getNome());
+       inputSalario.setText(vendedor.getSalariobase()+"");
+       inputComissao.setText(vendedor.getPerccomissao()+"");
+       addBtn.setText("Editar");
+    };
 
     @FXML
     private void addVendor(ActionEvent event){
@@ -90,19 +114,32 @@ public class TelaNovoVendedorController implements Initializable {
         
         if(flag == 0){
             try{
-                vendedor = new Vendedor();
-                vendedor.setNome(inputNome.getText());
-                vendedor.setSalariobase(parseDouble(inputSalario.getText()));
-                vendedor.setPerccomissao(parseDouble(inputComissao.getText()));
-                
-                banco.add(vendedor);
-                
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Cadastro Realizado");
-                alert.setHeaderText(null);
-                alert.setContentText("Vendedor Cadastrado!");
-                alert.showAndWait();
-                
+                if(vendedor == null){
+                    vendedor = new Vendedor();
+                    vendedor.setNome(inputNome.getText());
+                    vendedor.setSalariobase(parseDouble(inputSalario.getText()));
+                    vendedor.setPerccomissao(parseDouble(inputComissao.getText()));
+
+                    banco.add(vendedor);
+
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Cadastro Realizado");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Vendedor Cadastrado!");
+                    alert.showAndWait();
+                }else{
+                    vendedor.setNome(inputNome.getText());
+                    vendedor.setSalariobase(parseDouble(inputSalario.getText()));
+                    vendedor.setPerccomissao(parseDouble(inputComissao.getText()));
+                    
+                    banco.edit(vendedor);
+                    
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Atualização Realizada");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Vendedor Editado!");
+                    alert.showAndWait();
+                }
             }catch(Exception e){
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");

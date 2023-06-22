@@ -15,8 +15,8 @@
       <Label layoutX="398.0" layoutY="221.0" text="Nome" />
       <Label layoutX="398.0" layoutY="271.0" text="Salário base" />
       <Label layoutX="398.0" layoutY="321.0" text="Porcentagem de comissão" />
-      <Button fx:id="adicionar" layoutX="459.0" layoutY="411.0" mnemonicParsing="false" onAction="#addVendor" prefHeight="32.0" prefWidth="82.0" text="Adicionar" />
-      <Text layoutX="394.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Vendedor">
+      <Button fx:id="addBtn" layoutX="459.0" layoutY="411.0" mnemonicParsing="false" onAction="#addVendor" prefHeight="32.0" prefWidth="82.0" text="Adicionar" />
+      <Text fx:id="titleText1" layoutX="394.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Vendedor">
          <font>
             <Font size="24.0" />
          </font>
@@ -26,5 +26,12 @@
       <Text fx:id="reqSalario1" fill="#c30b0b" layoutX="462.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
       <Text fx:id="reqSalario2" fill="#c30b0b" layoutX="537.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
       <Button fx:id="TelaVendedores" layoutX="476.0" layoutY="468.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
+      <Label fx:id="idLab" layoutX="398.0" layoutY="171.0" opacity="0.0" text="Código do Vendedor" />
+      <TextField fx:id="inputId" editable="false" layoutX="398.0" layoutY="191.0" opacity="0.0" prefHeight="25.0" prefWidth="204.0" />
+      <Text fx:id="titleText2" layoutX="414.0" layoutY="129.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Vendedor">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

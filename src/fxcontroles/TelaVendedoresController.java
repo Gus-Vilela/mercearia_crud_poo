@@ -104,12 +104,40 @@ public class TelaVendedoresController implements Initializable {
                 alert.showAndWait();
         }
     }
-    
+    @FXML
+    public void editVendor(ActionEvent event){
+        try{
+            vendedor = tableVendedores.getSelectionModel().getSelectedItem();
+
+            if(vendedor != null){    
+                FXMLLoader carregador = new FXMLLoader(getClass().getClassLoader()
+                        .getResource("./telas/TelaNovoVendedor.fxml"));
+                root = carregador.load();        
+                TelaNovoVendedorController controller = carregador.getController();
+                controller.initializeWithData(vendedor);
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Atenção");
+                alert.setHeaderText("Nenhum vendedor selecionado!");
+                alert.setContentText("Selecione o vendedor que deseja excluir.");
+                alert.showAndWait();
+            }
+        }catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText(null);
+            alert.setContentText("Erro: " + e.getMessage());
+            alert.showAndWait();
+        }
+    }
     @FXML
     public void deleteVendor(){
         try{
-            Vendedor vendedor = tableVendedores.getSelectionModel().getSelectedItem();
-
+            vendedor = tableVendedores.getSelectionModel().getSelectedItem();
             if(vendedor != null){
                 Alert alerta = new Alert(Alert.AlertType.CONFIRMATION);
                 alerta.setTitle("Atenção");
@@ -141,13 +169,13 @@ public class TelaVendedoresController implements Initializable {
     
     @FXML
     public void switchScene(ActionEvent event)  {
-        try{
+       try{
         Button btn = (Button)event.getSource();
         String nomeTela = btn.getId();
         String caminhoTela = "./telas/" + nomeTela + ".fxml";     
         FXMLLoader carregador = new FXMLLoader(getClass().getClassLoader().getResource(caminhoTela));
         root = carregador.load();
-     
+        
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);

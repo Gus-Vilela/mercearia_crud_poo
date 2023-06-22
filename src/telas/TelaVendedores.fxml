@@ -19,13 +19,14 @@
       </TableView>
       <Text fx:id="campoObri" fill="#c30b0b" layoutX="681.0" layoutY="366.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Campo Obrigatório" />
       <Button fx:id="TelaPrincipal" layoutX="458.0" layoutY="543.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="25.0" prefWidth="84.0" text="Voltar" />
-      <Text layoutX="455.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vendedores">
+      <Text layoutX="434.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vendedores">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <Button fx:id="TelaSalarios" layoutX="344.0" layoutY="493.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="33.0" prefWidth="84.0" text="Salários" />
-      <Button fx:id="TelaNovoVendedor" layoutX="458.0" layoutY="493.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="33.0" prefWidth="84.0" text="Novo" />
-      <Button layoutX="573.0" layoutY="493.0" mnemonicParsing="false" onAction="#deleteVendor" prefHeight="33.0" prefWidth="84.0" text="Remover" />
+      <Button fx:id="TelaSalarios" layoutX="290.0" layoutY="493.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="33.0" prefWidth="84.0" text="Salários" />
+      <Button fx:id="TelaNovoVendedor" layoutX="404.0" layoutY="493.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="33.0" prefWidth="84.0" text="Novo" />
+      <Button layoutX="517.0" layoutY="493.0" mnemonicParsing="false" onAction="#deleteVendor" prefHeight="33.0" prefWidth="84.0" text="Remover" />
+      <Button layoutX="627.0" layoutY="493.0" mnemonicParsing="false" onAction="#editVendor" prefHeight="33.0" prefWidth="84.0" text="Editar" />
    </children>
 </AnchorPane>
