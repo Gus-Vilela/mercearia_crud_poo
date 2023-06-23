@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaRelatorioVendaController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" styleClass="root" stylesheets="@styles/TelaStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaRelatorioVendaController">
    <children>
       <Label fx:id="vendedorLab" layoutX="252.0" layoutY="128.0" text="Label">
          <font>
@@ -24,10 +24,10 @@
          </font></Label>
       <TableView fx:id="produtosTable" layoutX="191.0" layoutY="162.0" prefHeight="305.0" prefWidth="621.0">
         <columns>
-          <TableColumn fx:id="descCol" prefWidth="155.0" text="Produto" />
-          <TableColumn fx:id="precoUniCol" prefWidth="125.0" text="Preço" />
-            <TableColumn fx:id="quantCol" prefWidth="168.0" text="Quantidade" />
-            <TableColumn fx:id="totalProdCol" prefWidth="172.0" text="Total Produto" />
+          <TableColumn fx:id="descCol" prefWidth="155.0" styleClass="colum" text="Produto" />
+          <TableColumn fx:id="precoUniCol" prefWidth="125.0" styleClass="colum" text="Preço R$" />
+            <TableColumn fx:id="quantCol" prefWidth="168.0" styleClass="colum" text="Quantidade" />
+            <TableColumn fx:id="totalProdCol" prefWidth="172.0" styleClass="colum" text="Total Produto R$" />
         </columns>
       </TableView>
       <Label layoutX="679.0" layoutY="487.0" text="Valor Total da Venda:" />
@@ -43,6 +43,6 @@
             <Font size="25.0" />
          </font>
       </Text>
-      <Button fx:id="TelaVendas" layoutX="469.0" layoutY="519.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="31.0" prefWidth="63.0" text="Voltar" />
+      <Button fx:id="TelaVendas" layoutX="443.0" layoutY="523.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="31.0" prefWidth="63.0" text="Voltar" />
    </children>
 </AnchorPane>

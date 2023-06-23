@@ -73,7 +73,7 @@ public class TelaRelatorioDiarioController implements Initializable {
 
             
             DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-            totalLab.setText(decimalFormat.format(totalValor));
+            totalLab.setText("R$"+decimalFormat.format(totalValor));
         }catch(Exception e){
             System.out.println(e);
             Alert alert = new Alert(Alert.AlertType.ERROR);

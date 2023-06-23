@@ -10,28 +10,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaNovaVendaController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" styleClass="root" stylesheets="@styles/TelaStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaNovaVendaController">
    <children>
-      <TableView fx:id="tableProdutos" layoutX="442.0" layoutY="148.0" prefHeight="279.0" prefWidth="530.0">
+      <TableView fx:id="tableProdutos" layoutX="399.0" layoutY="148.0" prefHeight="305.0" prefWidth="573.0">
         <columns>
-            <TableColumn fx:id="imgCol" prefWidth="87.0" text="Imagem" />
-          <TableColumn fx:id="prodCol" prefWidth="92.0" text="Produto" />
-          <TableColumn fx:id="precoCol" prefWidth="67.0" text="Preço" />
-            <TableColumn fx:id="medidaCol" prefWidth="118.0" text="Unidade de Medida" />
-            <TableColumn fx:id="quantCol" minWidth="0.0" text="Quantidade" />
-            <TableColumn fx:id="addCol" prefWidth="85.0" text="Adicionar" />
+            <TableColumn fx:id="imgCol" prefWidth="87.0" styleClass="colum" text="Imagem" />
+          <TableColumn fx:id="prodCol" prefWidth="92.0" styleClass="colum" text="Produto" />
+          <TableColumn fx:id="precoCol" prefWidth="67.0" styleClass="colum" text="Preço R$" />
+            <TableColumn fx:id="medidaCol" prefWidth="118.0" styleClass="colum" text="Unidade de Medida" />
+            <TableColumn fx:id="quantCol" minWidth="0.0" styleClass="colum" text="Quantidade" />
+            <TableColumn fx:id="addCol" prefWidth="85.0" styleClass="colum" text="Adicionar" />
         </columns>
       </TableView>
-      <DatePicker fx:id="dataVenda" layoutX="131.0" layoutY="360.0" prefHeight="25.0" prefWidth="185.0" />
-      <Label layoutX="131.0" layoutY="180.0" text="Vendedor" />
-      <ComboBox fx:id="vendedorBox" layoutX="131.0" layoutY="200.0" prefHeight="25.0" prefWidth="185.0" />
-      <ComboBox fx:id="pagamentoBox" layoutX="131.0" layoutY="280.0" prefHeight="25.0" prefWidth="185.0" />
-      <Label layoutX="131.0" layoutY="260.0" text="Metódo de Pagamento" />
-      <Label layoutX="131.0" layoutY="340.0" text="Data da Venda" />
-      <Button fx:id="TelaRelatorioVenda" layoutX="442.0" layoutY="488.0" mnemonicParsing="false" onAction="#addSale" prefHeight="32.0" prefWidth="117.0" text="Adicionar" />
-      <Button fx:id="TelaVendas" layoutX="476.0" layoutY="537.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
-      <Text fill="#b50000" layoutX="210.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text fx:id="campoObri" fill="#b50000" layoutX="159.0" layoutY="423.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Campo Obrigatório" />
+      <DatePicker fx:id="dataVenda" layoutX="115.0" layoutY="360.0" prefHeight="25.0" prefWidth="185.0" />
+      <Label layoutX="115.0" layoutY="180.0" text="Vendedor" />
+      <ComboBox fx:id="vendedorBox" layoutX="115.0" layoutY="200.0" prefHeight="25.0" prefWidth="185.0" />
+      <ComboBox fx:id="pagamentoBox" layoutX="115.0" layoutY="280.0" prefHeight="25.0" prefWidth="185.0" />
+      <Label layoutX="115.0" layoutY="260.0" text="Metódo de Pagamento" />
+      <Label layoutX="115.0" layoutY="340.0" text="Data da Venda" />
+      <Button fx:id="TelaRelatorioVenda" layoutX="442.0" layoutY="485.0" mnemonicParsing="false" onAction="#addSale" prefHeight="32.0" prefWidth="117.0" styleClass="btn" text="Adicionar" />
+      <Button fx:id="TelaVendas" layoutX="442.0" layoutY="538.0" mnemonicParsing="false" onAction="#switchScene" styleClass="btn" text="Voltar" />
+      <Text fill="#b50000" layoutX="194.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fx:id="campoObri" fill="#b50000" layoutX="143.0" layoutY="424.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Campo Obrigatório" />
       <Text layoutX="409.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Venda">
          <font>
             <Font size="25.0" />

@@ -20,6 +20,7 @@ public class MerceariaFX extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException{
+        try{
         FXMLLoader carregador = new FXMLLoader();
         String nomeTela = "./telas/TelaPrincipal.fxml";
 
@@ -30,6 +31,9 @@ public class MerceariaFX extends Application {
         
         primaryStage.setScene(scene);
         primaryStage.show();
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
 
     /**

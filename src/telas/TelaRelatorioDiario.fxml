@@ -8,13 +8,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaRelatorioDiarioController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" styleClass="root" stylesheets="@styles/TelaStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaRelatorioDiarioController">
    <children>
-      <TableView fx:id="produtosVendidosTable" layoutX="121.0" layoutY="134.0" prefHeight="333.0" prefWidth="759.0">
+      <TableView fx:id="produtosVendidosTable" layoutX="103.0" layoutY="134.0" prefHeight="333.0" prefWidth="789.0">
         <columns>
-          <TableColumn fx:id="descCol" prefWidth="252.0" text="Produto" />
-          <TableColumn fx:id="quantCol" prefWidth="250.0" text="Quantidade" />
-            <TableColumn fx:id="totalProdCol" prefWidth="256.0" text="Total Vendido por Produto" />
+          <TableColumn fx:id="descCol" prefWidth="252.0" styleClass="colum" text="Produto" />
+          <TableColumn fx:id="quantCol" prefWidth="250.0" styleClass="colum" text="Quantidade" />
+            <TableColumn fx:id="totalProdCol" prefWidth="286.0" styleClass="colum" text="Total Vendido por Produto R$" />
         </columns>
       </TableView>
       <Text layoutX="412.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Relatório Diário">
@@ -27,7 +27,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="TelaPrincipal" layoutX="474.0" layoutY="525.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
+      <Button fx:id="TelaPrincipal" layoutX="440.0" layoutY="530.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
       <Label fx:id="totalLab" alignment="CENTER" layoutX="712.0" layoutY="505.0" prefHeight="25.0" prefWidth="95.0" text="Total">
          <font>
             <Font name="System Bold" size="16.0" />

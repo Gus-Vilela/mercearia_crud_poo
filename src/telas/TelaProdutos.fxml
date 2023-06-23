@@ -7,10 +7,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" stylesheets="@TelaProdutosStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaProdutosController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" styleClass="root" stylesheets="@styles/TelaStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaProdutosController">
    <children>
-      <Button fx:id="TelaNovoProduto" layoutX="454.0" layoutY="512.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="33.0" prefWidth="91.0" text="Novo Produto" />
-      <Button fx:id="TelaPrincipal" layoutX="476.0" layoutY="557.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
+      <Button fx:id="TelaNovoProduto" layoutX="445.0" layoutY="509.0" mnemonicParsing="false" onAction="#switchScene" prefHeight="33.0" prefWidth="91.0" text="Novo Produto" />
+      <Button fx:id="TelaPrincipal" layoutX="445.0" layoutY="554.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
       <Text layoutX="450.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produtos">
          <font>
             <Font size="25.0" />
@@ -18,11 +18,11 @@
       </Text>
       <TableView fx:id="tableProdutos" layoutX="59.0" layoutY="106.0" prefHeight="388.0" prefWidth="883.0">
         <columns>
-          <TableColumn fx:id="idCol" prefWidth="74.0" text="Id" />
-          <TableColumn fx:id="descCol" prefWidth="255.0" text="Descrição" />
-            <TableColumn fx:id="precoCol" prefWidth="171.0" text="Preço" />
-            <TableColumn fx:id="imgCol" prefWidth="248.0" text="Imagem" />
-            <TableColumn fx:id="medidaCol" minWidth="0.0" prefWidth="134.0" text="Unidade de Medida" />
+          <TableColumn fx:id="idCol" prefWidth="74.0" styleClass="colum" text="Id" />
+          <TableColumn fx:id="descCol" prefWidth="255.0" styleClass="colum" text="Descrição" />
+            <TableColumn fx:id="precoCol" prefWidth="171.0" styleClass="colum" text="Preço R$" />
+            <TableColumn fx:id="imgCol" prefWidth="248.0" styleClass="colum" text="Imagem" />
+            <TableColumn fx:id="medidaCol" minWidth="0.0" prefWidth="134.0" styleClass="colum" text="Unidade de Medida" />
         </columns>
       </TableView>
    </children>

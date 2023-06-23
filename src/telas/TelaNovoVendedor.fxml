@@ -7,27 +7,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaNovoVendedorController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" styleClass="root" stylesheets="@styles/TelaStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaNovoVendedorController">
    <children>
-      <TextField fx:id="inputNome" layoutX="398.0" layoutY="241.0" prefHeight="25.0" prefWidth="204.0" />
-      <TextField fx:id="inputSalario" layoutX="398.0" layoutY="291.0" prefHeight="25.0" prefWidth="204.0" />
-      <TextField fx:id="inputComissao" layoutX="398.0" layoutY="341.0" prefHeight="25.0" prefWidth="204.0" />
-      <Label layoutX="398.0" layoutY="221.0" text="Nome" />
-      <Label layoutX="398.0" layoutY="271.0" text="Salário base" />
-      <Label layoutX="398.0" layoutY="321.0" text="Porcentagem de comissão" />
-      <Button fx:id="addBtn" layoutX="459.0" layoutY="411.0" mnemonicParsing="false" onAction="#addVendor" prefHeight="32.0" prefWidth="82.0" text="Adicionar" />
+      <TextField fx:id="inputNome" layoutX="389.0" layoutY="237.0" prefHeight="25.0" prefWidth="221.0" />
+      <TextField fx:id="inputSalario" layoutX="389.0" layoutY="287.0" prefHeight="25.0" prefWidth="221.0" />
+      <TextField fx:id="inputComissao" layoutX="389.0" layoutY="337.0" prefHeight="25.0" prefWidth="221.0" />
+      <Label layoutX="389.0" layoutY="217.0" text="Nome" />
+      <Label layoutX="389.0" layoutY="267.0" text="Salário base" />
+      <Label layoutX="389.0" layoutY="317.0" text="Porcentagem de comissão" />
+      <Button fx:id="addBtn" layoutX="443.0" layoutY="408.0" mnemonicParsing="false" onAction="#addVendor" prefHeight="32.0" prefWidth="82.0" text="Adicionar" />
       <Text fx:id="titleText1" layoutX="394.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Vendedor">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fx:id="campoObri" fill="#c30b0b" layoutX="452.0" layoutY="384.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Campo Obrigatório" />
-      <Text fx:id="reqSalario" fill="#c30b0b" layoutX="432.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text fx:id="reqSalario1" fill="#c30b0b" layoutX="462.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text fx:id="reqSalario2" fill="#c30b0b" layoutX="537.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Button fx:id="TelaVendedores" layoutX="476.0" layoutY="468.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
-      <Label fx:id="idLab" layoutX="398.0" layoutY="171.0" opacity="0.0" text="Código do Vendedor" />
-      <TextField fx:id="inputId" editable="false" layoutX="398.0" layoutY="191.0" opacity="0.0" prefHeight="25.0" prefWidth="204.0" />
+      <Text fx:id="campoObri" fill="#c30b0b" layoutX="444.0" layoutY="382.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="* Campo Obrigatório" />
+      <Text fx:id="reqSalario" fill="#c30b0b" layoutX="423.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fx:id="reqSalario1" fill="#c30b0b" layoutX="453.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fx:id="reqSalario2" fill="#c30b0b" layoutX="528.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Button fx:id="TelaVendedores" layoutX="443.0" layoutY="464.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
+      <Label fx:id="idLab" layoutX="387.0" layoutY="168.0" opacity="0.0" text="Código do Vendedor" />
+      <TextField fx:id="inputId" editable="false" layoutX="387.0" layoutY="187.0" opacity="0.0" prefHeight="25.0" prefWidth="221.0" />
       <Text fx:id="titleText2" layoutX="414.0" layoutY="129.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar Vendedor">
          <font>
             <Font size="24.0" />

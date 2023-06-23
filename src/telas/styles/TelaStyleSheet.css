@@ -6,10 +6,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Created on : Jun 18, 2023, 5:23:11 PM
     Author     : gusta
 */
-#tableProdutos #imgCol,#idCol{
+
+.root{
+    -fx-background-color: #EEEEEE;
+}
+.colum {
     -fx-alignment: center;
 }
 
 
-
-
+Button {
+    -fx-pref-width: 115;
+    -fx-pref-height: 32;
+    -fx-background-color: #132A12;
+    -fx-text-fill: white;
+    -fx-font-size: 1.1em;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, black, 2, 0,0,3);
+}

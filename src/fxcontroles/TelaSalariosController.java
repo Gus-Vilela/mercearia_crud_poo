@@ -97,7 +97,7 @@ public class TelaSalariosController implements Initializable {
         try{
             Double total = vendedorDAO.calcularSalario(vendedorBox.getValue(), anoBox.getValue(), mesBox.getValue());
             DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-            salarioTotal.setText(decimalFormat.format(total));
+            salarioTotal.setText("R$"+decimalFormat.format(total));
             
         }catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);

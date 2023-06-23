@@ -7,26 +7,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaNovoProdutoController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" styleClass="root" stylesheets="@styles/TelaStyleSheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxcontroles.TelaNovoProdutoController">
    <children>
-      <TextField fx:id="inputDesc" layoutX="400.0" layoutY="198.0" prefHeight="25.0" prefWidth="200.0" />
-      <Label layoutX="400.0" layoutY="178.0" text="Descrição" />
-      <TextField fx:id="inputPreco" layoutX="400.0" layoutY="248.0" prefHeight="25.0" prefWidth="200.0" />
-      <Label layoutX="400.0" layoutY="228.0" text="Preço" />
-      <TextField fx:id="inputImg" layoutX="400.0" layoutY="298.0" prefHeight="25.0" prefWidth="200.0" promptText="Ex: Banana.jpg" />
-      <Label layoutX="400.0" layoutY="278.0" text="Nome do Arquivo de imagem" />
-      <TextField fx:id="InputMedida" layoutX="400.0" layoutY="348.0" prefHeight="25.0" prefWidth="200.0" />
-      <Label layoutX="400.0" layoutY="328.0" text="Unidade de medida" />
-      <Button fx:id="adicionar" layoutX="457.0" layoutY="405.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="33.0" prefWidth="86.0" text="Adicionar" />
+      <TextField fx:id="inputDesc" layoutX="391.0" layoutY="195.0" prefHeight="25.0" prefWidth="219.0" />
+      <Label layoutX="391.0" layoutY="175.0" text="Descrição" />
+      <TextField fx:id="inputPreco" layoutX="391.0" layoutY="245.0" prefHeight="25.0" prefWidth="219.0" />
+      <Label layoutX="391.0" layoutY="225.0" text="Preço" />
+      <TextField fx:id="inputImg" layoutX="391.0" layoutY="295.0" prefHeight="25.0" prefWidth="219.0" promptText="Ex: Banana.jpg" />
+      <Label layoutX="391.0" layoutY="275.0" text="Nome do Arquivo de imagem" />
+      <TextField fx:id="InputMedida" layoutX="391.0" layoutY="345.0" prefHeight="25.0" prefWidth="219.0" />
+      <Label layoutX="391.0" layoutY="325.0" text="Unidade de medida" />
+      <Button fx:id="adicionar" layoutX="446.0" layoutY="408.0" mnemonicParsing="false" onAction="#addProduct" prefHeight="33.0" prefWidth="86.0" text="Adicionar" />
       <Text layoutX="399.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Produto">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <Text fill="#bf0808" layoutX="452.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text fill="#bf0808" layoutX="430.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-      <Text fill="#bf0808" layoutX="503.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fill="#bf0808" layoutX="443.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fill="#bf0808" layoutX="421.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+      <Text fill="#bf0808" layoutX="494.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
       <Text fx:id="campoObri" fill="#bf0808" layoutX="446.0" layoutY="393.0" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*Campo Obrigatório" />
-      <Button fx:id="TelaProdutos" layoutX="476.0" layoutY="452.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
+      <Button fx:id="TelaProdutos" layoutX="446.0" layoutY="461.0" mnemonicParsing="false" onAction="#switchScene" text="Voltar" />
    </children>
 </AnchorPane>

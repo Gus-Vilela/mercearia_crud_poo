@@ -102,7 +102,7 @@ public class TelaRelatorioVendaController implements Initializable {
         }
 
         
-        totalLab.setText(String.format("%.2f", total));
+        totalLab.setText("R$"+ String.format("%.2f", total));
     }
     
     @FXML
